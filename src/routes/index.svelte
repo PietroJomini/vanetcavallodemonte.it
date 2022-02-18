@@ -1,0 +1,1 @@
+<div class="w-screen h-screen bg-slate-600"></div>
