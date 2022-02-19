@@ -24,6 +24,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@splidejs/svelte-splide": "^0.1.18",
     "feather-icons": "^4.28.0",
     "svelte-outclick": "^3.0.0"
   }
