@@ -1,0 +1,58 @@
+{
+	"title": "Campi estivi",
+	"description": "Fin dagli inizi degli anni '90, Vanet Cavallo organizza Campi Estivi della durata di una settimana per gruppi di bambini e ragazzi dai 6 ai 17 anni, divisi in fasce d'età. Durante il Campo i ragazzi vivranno tutti insieme, occupandosi dei cavalli a loro affidati sotto ogni aspetto. Oltre alle lezioni e alle divertenti uscite nei boschi, apprenderanno divertendosi le attività di scuderia, il grooming, nozioni di mascalcia e veterinaria, l'addestramento ecc.",
+	"years": "anni",
+	"persons": "alliveo",
+	"a6_11": {
+		"title": "Campi estivi per ragazzi dai 6 agli 11 anni",
+		"description": "Negli ampi spazi del nostro Centro Equestre, nel cuore della splendida Valle Stura, i bambini impareranno a cavalcare come veri cavalieri ed amazzoni di montagna.",
+		"dates": "Ecco le date dei prossimi campi!",
+		"person": "bambino",
+		"cards": {
+			"1": {
+				"title": "Equitazione a 360 gradi",
+				"content": "I nostri cavalli Haflinger sono i compagni ideali di questa avventura, saggi e docili, renderanno la vacanza indimenticabile. In un clima di divertimento e spirito di gruppo, capiremo come prenderci cura di questo nobile animale anche attraverso lezioni con il veterinario e con il maniscalco. Impareremo le basi della monta inglese e di quella alpina, il corretto assetto, le diverse andature. Per i bimbi già esperti, si punterà a migliorare, con lezioni mirate ed escursioni, le capacità individuali di ognuno. Al termine di ogni attività, ringrazieremo i nostri nuovi amici con striglia, brusca, coccole e una buona dose di fieno all'interno della scuderia."
+			},
+			"2": {
+				"title": "Attività complementari",
+				"content": "I diversi momenti in sella, saranno intervallati da piacevoli pause dove tutti prenderanno parte a numerose attività come il governo degli animali nelle stalle, portare i cavalli a pascolo, cuocere il pane nel forno a legna, caccia al tesoro nei boschi, giochi di gruppo ecc."
+			},
+			"3": {
+				"title": "La gita in montagna",
+				"content": "Un'intera giornata sarà dedicata ad un'escursione a piedi e a cavallo in montagna, con pic-nic in una meravigliosa radura. La sera monteremo le tende e dormiremo sotto le stelle accanto ad un grande falò. Lo scenario è quello incontaminato della Valle Stura, con la sua natura selvaggia ancora tutta da scoprire."
+			},
+			"4": {
+				"title": "Attività",
+				"content": "Lezioni di equitazione classica di base, lezioni di equitazione alpina, facili escursioni a cavallo in montagna, grooming e toelettatura, attività di scuderia, lezioni di veterinaria e mascalcia, attività ludiche di gruppo: orienteering, caccia al tesoro, cucina... "
+			}
+		}
+	},
+	"a12_17": {
+		"title": "Campi estivi per ragazzi dai 12 agli 17 anni",
+		"description": "Questo campo è dedicato a ragazzi, di tutti i livelli equestri, di spirito avventuroso, amanti della natura e dei cavalli.",
+		"dates": "Ecco le date dei prossimi campi!",
+		"person": "ragazzo",
+		"cards": {
+			"1": {
+				"title": "Equitazione a 360 gradi",
+				"content": "Il traguardo dei nostri campi è quello di far vivere ai partecipanti la sfera del cavallo nella maniera più intensa e completa possibile. Per questo, oltre alle lezioni in maneggio e alle uscite nei boschi, i ragazzi impareranno a prendersi cura del cavallo a loro affidato sotto tutti gli aspetti. Impareranno a pulirlo, ad alimentarlo in modo corretto, a continuare il suo addestramento, sia attraverso attività pratiche che attraverso lezioni di veterinaria e mascalcia."
+			},
+			"2": {
+				"title": "Trekking in quota",
+				"content": "La vera avventura del Campo sarà un trekking a cavallo di 1 o 2 giorni (dipenderà dal livello equestre del gruppo) in quota, durante il quale ci fermeremo a pernottare in tenda sotto le stelle, riscaldati dal tepore di un falò o in uno dei magnifici rifugi della nostra Valle. Lo scenario è quello incontaminato della Valle Stura, con la sua natura selvaggia ancora tutta da scoprire."
+			},
+			"3": {
+				"title": "I cavalli Haflinger",
+				"content": "I compagni dei ragazzi saranno i nostri docili ed esperti Haflinger, cavalli abituati a lavorare con principianti e persone di tutte le età, e saranno sempre seguiti da un'equipe esperta e da Guide Equestri ENGEA certificate."
+			},
+			"4": {
+				"title": "Il pernottamento",
+				"content": "Organizziamo Campi Estivi dal 1990. I ragazzi pernotteranno nel nostro rifugio ed agriturismo, mangiando in modo sano e vario, piatti della tradizione di montagna, prodotti della Valle e verdura e frutta del nostro orto."
+			},
+			"5": {
+				"title": "Attività",
+				"content": "Lezioni di equitazione classica di base, lezioni di equitazione alpina di base ed avanzata, escursioni equestri in montagna, attività di scuderia, grooming e toelettatura, lezioni di mascalcia e veterinaria, lavoro alla longe, orienteering."
+			}
+		}
+	}
+}

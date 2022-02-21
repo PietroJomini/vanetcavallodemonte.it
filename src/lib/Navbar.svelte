@@ -13,10 +13,10 @@
 		{ name: 'lezioni', to: '/lessons' },
 		{ name: 'bambini', to: '/childs' },
 		{ name: 'trekking', to: '/trekking' },
-		{ name: 'campi estivi', to: '/' },
-		{ name: 'allevamento', to: '/' },
-		{ name: 'prezzi', to: '/' },
-		{ name: 'contatti', to: '/' }
+		{ name: 'campi estivi', to: '/camps' },
+		{ name: 'allevamento', to: '/farm' },
+		{ name: 'prezzi', to: '/prices' },
+		{ name: 'contatti', to: '/contacts' }
 	];
 
 	let open = false;
