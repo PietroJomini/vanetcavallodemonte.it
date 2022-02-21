@@ -2,18 +2,15 @@
 	import Card from '$lib/Card.svelte';
 	import PriceCard from '$lib/PriceCard.svelte';
 	import Separator from '$lib/Separator.svelte';
+	import Hero from '$lib/Hero.svelte';
 	import { t } from '$lib/translations';
 </script>
 
-<div class="w-full p-5 pt-0 flex flex-col h-screen">
-	<div class="flex-grow flex lg:flex-row flex-col">
-		<div class="lg:w-2/3 w-full lg:p-20 flex flex-col justify-center py-10 lg:pb-40">
-			<div class="text-5xl font-cabin pt-10 text-gray-800">{$t('lessons.title')}</div>
-			<div class="max-w-2xl mt-4 font-cabin text-gray-700">{$t('lessons.description')}</div>
-		</div>
-		<div class="lg:w-1/2 w-full h-full bg-green-200" />
-	</div>
-</div>
+<Hero>
+	<svelte:fragment slot="title">{$t('lessons.title')}</svelte:fragment>
+	<svelte:fragment slot="description">{$t('lessons.description')}</svelte:fragment>
+	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+</Hero>
 
 <div class="p-10 lg:py-20 max-w-6xl mx-auto">
 	<Separator horizontal dotted weight="200" width="4" />
