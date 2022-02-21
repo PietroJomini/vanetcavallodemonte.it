@@ -3,17 +3,17 @@
 @import './fascinate.css';
 
 * {
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .font-roboto {
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .font-cabin {
-    font-family: 'Cabin', sans-serif;
+	font-family: 'Cabin', sans-serif;
 }
 
 .font-fascinate {
-    font-family: 'Fascinate', cursive;
+	font-family: 'Fascinate', cursive;
 }
