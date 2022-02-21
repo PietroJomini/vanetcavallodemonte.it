@@ -1,0 +1,20 @@
+{
+	"prices": "Prezzi",
+	"title": "Lezioni",
+	"person": "allievo",
+	"description": "L'obiettivo del nostro Centro è quello di trasmettere l'amore ed il rispetto per il cavallo che può essere raggiunto solo tramite la conoscenza di questo nobile animale a tutto campo. A Vanet durante le lezioni, oltre ad imparare a montare a cavallo, cerchiamo di far capire ai nostri allievi che prima di salire in sella e cominciare a cavalcare è indispensabile imparare a conoscere il cavallo nella sua globalità. Imparando la pulizia, le nozioni teoriche e pratiche riguardanti i finimenti e la bardatura si sfrutterà con maggior profitto ciò che in un momento successivo verrà appreso in sella.",
+	"cards": {
+		"1": {
+			"title": "ENGEA",
+			"content": "Le lezioni si svolgono in campo con i nostri docili e ben addestrati cavalli da scuola, sempre seguiti da un Formatore ENGEA e da tecnici qualificati."
+		},
+		"2": {
+			"title": "Equotazione classica",
+			"content": "Da molti definita \"monta inglese\""
+		},
+		"3": {
+			"title": "Equitazione alpina",
+			"content": "La massima espressione dell'equitazione di campagna, che mira alla conoscenza specifica della tecnica equestre in condizioni di altura."
+		}
+	}
+}

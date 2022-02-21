@@ -12,6 +12,11 @@ const config = {
 			locale: 'it',
 			key: 'ride',
 			loader: async () => await import('./it/ride.json')
+		},
+		{
+			locale: 'it',
+			key: 'lessons',
+			loader: async () => await import('./it/lessons.json')
 		}
 	]
 };
