@@ -1,20 +1,20 @@
 {
-    "discover": "Scoprti di più",
-    "title": {
-        "1": "Dal 1980, è luogo del cuore degli amanti dell'equitazione di montagna.",
-        "2": "Vanet Cavallo",
-        "3": "Situato a 1030 m di altezza, Vanet gode di un panorama spettacolare, sempre esposto al sole. L'agriturismo è punto di partenza per passeggiate e trekking a cavallo dei docili Haflinger, razza che selezioniamo ed alleviamo con passione da 37 anni."
-    },
-    "cards": {
-        "1": { 
-            "title": "Campi estivi",
-            "content": "Ogni estate Vanet è meta di tantissimi bambini e ragazzi dai 6 ai 17 anni, i quali prendono parte ai nostri Campi Estivi che ruotano tutti intorno all'equitazione di montagna.",
-            "page": "camps"    
-        },
-        "2": { 
-            "title": "Gli Haflinger",
-            "content": "L'allevamento Vanet Cavallo conta ad oggi una ventina di ottimi cavalli e cavalle Haflinger, che costituiscono l'elemento portante di questa  realtà.",
-            "page": "farm"    
-        }
-    }
+	"discover": "Scoprti di più",
+	"title": {
+		"1": "Dal 1980, è luogo del cuore degli amanti dell'equitazione di montagna.",
+		"2": "Vanet Cavallo",
+		"3": "Situato a 1030 m di altezza, Vanet gode di un panorama spettacolare, sempre esposto al sole. L'agriturismo è punto di partenza per passeggiate e trekking a cavallo dei docili Haflinger, razza che selezioniamo ed alleviamo con passione da 37 anni."
+	},
+	"cards": {
+		"1": {
+			"title": "Campi estivi",
+			"content": "Ogni estate Vanet è meta di tantissimi bambini e ragazzi dai 6 ai 17 anni, i quali prendono parte ai nostri Campi Estivi che ruotano tutti intorno all'equitazione di montagna.",
+			"page": "camps"
+		},
+		"2": {
+			"title": "Gli Haflinger",
+			"content": "L'allevamento Vanet Cavallo conta ad oggi una ventina di ottimi cavalli e cavalle Haflinger, che costituiscono l'elemento portante di questa  realtà.",
+			"page": "farm"
+		}
+	}
 }
