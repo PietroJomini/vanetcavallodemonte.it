@@ -1,0 +1,19 @@
+{
+	"title": "Avvicinamento al cavallo (dai 3 ai 14 anni)",
+	"description": "Quest'attività è dedicata a tutti quei bambini che non hanno mai avvicinato un cavallo ma sono spinti da un’innata curiosità. Obiettivi dell'attività: creare famigliarità e dimestichezza nei confronti di un animale così grande abbandonando le paure. Insegnare le norme di sicurezza e quindi come comportarsi accanto ad un animale potenzialmente pericoloso, soprattutto per i bambini. Far vivere al bambino un’esperienza positiva e coinvolgente nella relazione con il cavallo, che non sarà più visto come minaccioso e inaccessibile, ma come animale dotato di precise caratteristiche comportamentali e comunicative, che può essere avvicinato senza pericolo, una volta acquisite le necessarie conoscenze e competenze.",
+	"person": "bambino",
+	"cards": {
+		"1": {
+			"title": "Il primo incontro",
+			"content": "L'attività è suddivisa in tre parti principali. La prima conciste nell'apprendimento delle norme di sicurezza di base per avvicinare il cavallo"
+		},
+		"2": {
+			"title": "La teolettatura",
+			"content": "La seconda attività è la toelettatura: pulizia del cavallo con striglia, brusca, nettapiedi e altre spazzole, imparando insieme le diverse parti del corpo del cavallo. "
+		},
+		"3": {
+			"title": "La passeggiata",
+			"content": "Dopo aver sellato insieme il nostro cavallo, si parte per una passeggiata di mezz'ora circa nei boschi adiacenti il Centro. Durante la passeggiata il bambino monterà in sella ed un tecnico qualificato sarà a terra governando il cavallo tramite la lunghina."
+		}
+	}
+}

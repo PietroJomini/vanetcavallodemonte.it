@@ -11,7 +11,7 @@
 	const pages = [
 		{ name: 'passeggiate', to: '/ride' },
 		{ name: 'lezioni', to: '/lessons' },
-		{ name: 'bambini', to: '/' },
+		{ name: 'bambini', to: '/childs' },
 		{ name: 'trekking', to: '/' },
 		{ name: 'campi estivi', to: '/' },
 		{ name: 'allevamento', to: '/' },

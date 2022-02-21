@@ -68,23 +68,17 @@
 
 <div class="p-10 pt-0 w-full">
 	<Card>
-		<svelte:fragment slot="image">
-			<div class="w-full h-full bg-green-200" />
-		</svelte:fragment>
+		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.1.content')}</svelte:fragment>
 	</Card>
 	<Card flip>
-		<svelte:fragment slot="image">
-			<div class="w-full h-full bg-green-200" />
-		</svelte:fragment>
+		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.2.content')}</svelte:fragment>
 	</Card>
 	<Card>
-		<svelte:fragment slot="image">
-			<div class="w-full h-full bg-green-200" />
-		</svelte:fragment>
+		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.3.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.3.content')}</svelte:fragment>
 	</Card>
