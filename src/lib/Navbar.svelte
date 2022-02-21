@@ -1,10 +1,11 @@
 <script>
     import { slide } from 'svelte/transition'
+    import { Icon } from '@steeze-ui/svelte-icon'
+    import { MenuAlt3, X, Calendar } from '@steeze-ui/heroicons'
 
     import Logo from './Logo.svelte'
     import LangSwitch from './LangSwitch.svelte'
     import Separator from "$lib/Separator.svelte"
-    import Icon from './Icon.svelte'
     import { navbar } from './stores'
 
     const pages = ['passeggiate','lezioni','bambini','trekking','campi estivi','allevamento','prezzi','contatti']
@@ -20,7 +21,7 @@
         <div class="flex justify-between items-center flex-grow lg:flex-none">
             <Logo></Logo>
             <div class="lg:hidden cursor-pointer w-6 h-6" on:click="{ () => open = !open }" bind:this={toggle}>
-                {#if !open } <Icon name="menu" /> {:else} <Icon name="x" />{/if}
+                {#if !open } <Icon src={MenuAlt3} /> {:else} <Icon src={X} />{/if}
             </div>
         </div>
 
@@ -31,7 +32,7 @@
                 </div>
                 <Separator horizontal />
                 <div class="w-full flex items-center justify-center space-x-2">
-                    <a href="events" class="w-6 h-6 cursor-pointer"><Icon name="calendar" /></a>
+                    <a href="events" class="w-6 h-6 cursor-pointer"><Icon src={Calendar} /></a>
                     <LangSwitch />
                 </div>
             </nav>

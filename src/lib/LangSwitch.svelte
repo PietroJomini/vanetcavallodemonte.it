@@ -1,6 +1,7 @@
 <script>
 	import OutClick from 'svelte-outclick'
-    import Icon from './Icon.svelte'
+    import { Icon } from '@steeze-ui/svelte-icon'
+    import { GlobeAlt } from '@steeze-ui/heroicons'
 
     let langs = ['Italiano', 'English', 'Français']
     let open = false
@@ -8,7 +9,7 @@
 
 <div class="static" on:click="{ _ => open = !open }">
     <OutClick on:outclick="{ _ => open = false }">
-        <div class="cursor-pointer h-6 w-6"><Icon name="globe" /></div>
+        <div class="cursor-pointer h-6 w-6"><Icon src={GlobeAlt} /></div>
 
         {#if open}
             <div class="absolute w-full lg:w-48 right-0 top-full px-5">
