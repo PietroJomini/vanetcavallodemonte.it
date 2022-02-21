@@ -12,7 +12,7 @@
 		{ name: 'passeggiate', to: '/ride' },
 		{ name: 'lezioni', to: '/lessons' },
 		{ name: 'bambini', to: '/childs' },
-		{ name: 'trekking', to: '/' },
+		{ name: 'trekking', to: '/trekking' },
 		{ name: 'campi estivi', to: '/' },
 		{ name: 'allevamento', to: '/' },
 		{ name: 'prezzi', to: '/' },
