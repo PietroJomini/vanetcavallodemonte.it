@@ -6,6 +6,7 @@
 
 	import { navbar } from '$lib/stores.js';
 	import Separator from '$lib/Separator.svelte';
+	import Card from '$lib/Card.svelte';
 
 	onMount(() => navbar.update((v) => ({ ...v, absolute: true })));
 	onDestroy(() => navbar.update((v) => ({ ...v, absolute: false })));
@@ -44,29 +45,30 @@
 </div>
 
 <div class="p-10 pt-0 w-full">
-	<div class="flex xl:flex-row flex-col p-4 w-full xl:max-w-7xl mx-auto group py-10">
-		<div class="xl:w-1/2 h-96 bg-green-200 xl:order-first" />
-		<div class="group xl:w-1/2 xl:h-96 py-10 flex items-center justify-center text-center flex-col">
-			<div class="transition-all pb-3 text-3xl w-full font-cabin text-gray-800">
-				{$t('home.cards.1.title')}
-			</div>
-			<div class="p-2 xl:w-2/3 text-gray-700">{$t('home.cards.1.content')}</div>
-			<span class="text-sm underline font-bold italic mt-2 cursor-pointer"
-				><a href="/{$t('home.cards.1.page')}">{$t('home.discover')} ></a>
-			</span>
-		</div>
-	</div>
-
-	<div class="flex xl:flex-row flex-col p-4 w-full xl:max-w-7xl mx-auto group py-10">
-		<div class="xl:w-1/2 h-96 bg-green-200 xl:order-last" />
-		<div class="group xl:w-1/2 xl:h-96 py-10 flex items-center justify-center text-center flex-col">
-			<div class="transition-all pb-3 text-3xl w-full font-cabin text-gray-800">
-				{$t('home.cards.2.title')}
-			</div>
-			<div class="p-2 xl:w-2/3 text-gray-700">{$t('home.cards.2.content')}</div>
-			<span class="text-sm underline font-bold italic mt-2 cursor-pointer">
-				<a href="/{$t('home.cards.2.page')}">{$t('home.discover')} ></a>
-			</span>
-		</div>
-	</div>
+	<Card>
+		<svelte:fragment slot="image">
+			<div class="w-full h-full bg-green-200" />
+		</svelte:fragment>
+		<svelte:fragment slot="title">{$t('home.cards.1.title')}</svelte:fragment>
+		<svelte:fragment slot="content">
+			{$t('home.cards.1.content')}
+			<a
+				class="block text-sm underline font-bold italic mt-3 cursor-pointer"
+				href="/{$t('home.cards.1.page')}">{$t('home.discover')} ></a
+			>
+		</svelte:fragment>
+	</Card>
+	<Card flip>
+		<svelte:fragment slot="image">
+			<div class="w-full h-full bg-green-200" />
+		</svelte:fragment>
+		<svelte:fragment slot="title">{$t('home.cards.2.title')}</svelte:fragment>
+		<svelte:fragment slot="content">
+			{$t('home.cards.2.content')}
+			<a
+				class="block text-sm underline font-bold italic mt-3 cursor-pointer"
+				href="/{$t('home.cards.2.page')}">{$t('home.discover')} ></a
+			>
+		</svelte:fragment>
+	</Card>
 </div>
