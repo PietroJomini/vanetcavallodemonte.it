@@ -1,0 +1,19 @@
+@import './roboto.css';
+@import './cabin.css';
+@import './fascinate.css';
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-cabin {
+    font-family: 'Cabin', sans-serif;
+}
+
+.font-fascinate {
+    font-family: 'Fascinate', cursive;
+}
