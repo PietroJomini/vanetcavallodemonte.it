@@ -9,14 +9,14 @@
 	import { navbar } from './stores';
 
 	const pages = [
-		'passeggiate',
-		'lezioni',
-		'bambini',
-		'trekking',
-		'campi estivi',
-		'allevamento',
-		'prezzi',
-		'contatti'
+		{ name: 'passeggiate', to: '/ride' },
+		{ name: 'lezioni', to: '/' },
+		{ name: 'bambini', to: '/' },
+		{ name: 'trekking', to: '/' },
+		{ name: 'campi estivi', to: '/' },
+		{ name: 'allevamento', to: '/' },
+		{ name: 'prezzi', to: '/' },
+		{ name: 'contatti', to: '/' }
 	];
 
 	let open = false;
@@ -49,7 +49,7 @@
 					class="flex space-y-4 lg:space-y-0 lg:space-x-4 p-4 lg:p-0 flex-col lg:flex-row w-full lg:w-auto"
 				>
 					{#each pages as page}
-						<a href="/" class="font-semibold uppercase whitespace-nowrap">{page}</a>
+						<a href={page.to} class="font-semibold uppercase whitespace-nowrap">{page.name}</a>
 					{/each}
 				</div>
 				<Separator horizontal />
