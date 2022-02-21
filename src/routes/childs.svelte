@@ -18,9 +18,7 @@
 	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 </Hero>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="p-10 pt-0 w-full">
 	<Card>

@@ -19,9 +19,7 @@
 	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 </Hero>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <!-- TODO prices -->
 <div class="p-5 max-w-7xl mx-auto">
@@ -96,9 +94,7 @@
 	</div>
 </div>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="p-5 max-w-6xl mx-auto divide-y divide-gray-200 mb-40">
 	<div class="text-4xl font-cabin pb-10 text-gray-800 text-center">

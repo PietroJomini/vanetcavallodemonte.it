@@ -12,9 +12,7 @@
 	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
 </Hero>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="p-5 max-w-7xl mx-auto">
 	<div class="text-4xl font-cabin text-gray-800 text-center">{$t('lessons.prices')}</div>
@@ -59,9 +57,7 @@
 	</div>
 </div>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="p-10 pt-0 w-full">
 	<Card>

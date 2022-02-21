@@ -40,9 +40,7 @@
 	<div class="max-w-4xl mx-auto text-gray-700 font-cabin">{$t('home.title.3')}</div>
 </div>
 
-<div class="p-10 lg:py-20 max-w-6xl mx-auto">
-	<Separator horizontal dotted weight="200" width="4" />
-</div>
+<Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="p-10 pt-0 w-full">
 	<Card>
