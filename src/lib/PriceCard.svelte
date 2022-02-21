@@ -1,10 +1,5 @@
 <script>
-	import { t } from './translations';
-
-	// TODO price
-	export let min_partecipants;
-	export let lenght;
-	export let price;
+	// TODO fetch price
 	export let focus = false;
 </script>
 
@@ -14,25 +9,21 @@
 		class:border-yellow-400={focus}
 		class:border-2={focus}
 	>
-		<div class="bg-green-200 w-full h-80 hidden lg:block" />
-		<div class="p-5 space-y-1">
-			<div class="text-4xl  flex justify-center items-baseline border-b border-gray-300 pb-4">
-				{lenght}
-				<div class="text-3xl text-gray-300">h</div>
+		<slot name="image" />
+		<div class="p-5">
+			<div class="text-4xl flex justify-center items-baseline border-b border-gray-300 pb-4">
+				<slot name="formula" />
 			</div>
-			<div class="text-gray-400 whitespace-nowrap py-5">
-				<div>
-					{$t('ride.from')} <b class="text-gray-500">{min_partecipants}</b>{$t('ride.people')}
+			{#if $$slots.description}
+				<div class="text-gray-400 whitespace-nowrap py-5">
+					<slot name="description" />
 				</div>
-				{#if focus}
-					<div>{$t('ride.perfect')} <b class="text-yellow-400">{$t('ride.beginners')}</b></div>
-				{/if}
-			</div>
+			{/if}
 			<div
-				class="text-4xl flex justify-center items-baseline border-t border-gray-300 pt-4 whitespace-nowrap"
+				class="text-4xl flex justify-center items-baseline border-gray-300 pt-4 whitespace-nowrap"
+				class:border-t={$$slots.description}
 			>
-				{price}
-				<div class="text-3xl text-gray-300">€ /{$t('ride.person')}</div>
+				<slot name="price" />
 			</div>
 		</div>
 	</div>
