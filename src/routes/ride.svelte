@@ -11,24 +11,24 @@
 	<svelte:fragment slot="description">
 		{$t('ride.description')}
 		<div
-			class="max-w-2xl mt-4 lg:w-min lg:whitespace-nowrap font-cabin text-gray-700 font-bold font-cabin border-b-2 text-xl border-yellow-500"
+			class="font-cabin font-cabin mt-4 max-w-2xl border-b-2 border-yellow-500 text-xl font-bold text-gray-700 lg:w-min lg:whitespace-nowrap"
 		>
 			{$t('ride.reserve')}
 		</div>
 	</svelte:fragment>
-	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 </Hero>
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
 <!-- TODO prices -->
-<div class="p-5 max-w-7xl mx-auto">
-	<div class="text-4xl font-cabin text-gray-800 text-center">{$t('ride.prices')}</div>
+<div class="mx-auto max-w-7xl p-5">
+	<div class="font-cabin text-center text-4xl text-gray-800">{$t('ride.prices')}</div>
 
-	<div class="mt-12 p-4 flex flex-col lg:flex-row lg:space-y-0 space-y-4 lg:space-x-4">
+	<div class="mt-12 flex flex-col space-y-4 p-4 lg:flex-row lg:space-y-0 lg:space-x-4">
 		<PriceCard focus>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				2
@@ -45,7 +45,7 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				3
@@ -61,7 +61,7 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				4
@@ -77,7 +77,7 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				5
@@ -96,20 +96,20 @@
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="p-5 max-w-6xl mx-auto divide-y divide-gray-300 mb-40">
-	<div class="text-4xl font-cabin pb-10 text-gray-800 text-center">
+<div class="mx-auto mb-40 max-w-6xl divide-y divide-gray-300 p-5">
+	<div class="font-cabin pb-10 text-center text-4xl text-gray-800">
 		{$t('ride.faq_name')}
 	</div>
 
 	<Collapsable>
-		<div class="text-gray-800 font-cabin" slot="title">{$t('ride.faq.1.title')}</div>
-		<div class="text-gray-700 font-cabin px-3 pb-6 pt-0" slot="content">
+		<div class="font-cabin text-gray-800" slot="title">{$t('ride.faq.1.title')}</div>
+		<div class="font-cabin px-3 pb-6 pt-0 text-gray-700" slot="content">
 			{$t('ride.faq.1.content')}
 		</div>
 	</Collapsable>
 	<Collapsable>
-		<div class="text-gray-800 font-cabin" slot="title">{$t('ride.faq.2.title')}</div>
-		<div class="text-gray-700 font-cabin px-3 pb-6 pt-0" slot="content">
+		<div class="font-cabin text-gray-800" slot="title">{$t('ride.faq.2.title')}</div>
+		<div class="font-cabin px-3 pb-6 pt-0 text-gray-700" slot="content">
 			{$t('ride.faq.2.content')}
 		</div>
 	</Collapsable>

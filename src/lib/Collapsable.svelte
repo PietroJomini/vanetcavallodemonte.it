@@ -10,7 +10,7 @@
 
 <div class={'p-2 ' + className}>
 	<div
-		class="w-full select-none px-3 py-4 text-2xl relative cursor-pointer"
+		class="relative w-full cursor-pointer select-none px-3 py-4 text-2xl"
 		on:click={() => (open = !open)}
 	>
 		<div class="w-3/4">

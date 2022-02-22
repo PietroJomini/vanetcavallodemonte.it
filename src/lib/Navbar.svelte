@@ -25,14 +25,14 @@
 	$: lg_slide = lg ? undefined : slide;
 </script>
 
-<div class="w-full text-gray-700 z-10" class:absolute={$navbar.absolute}>
+<div class="z-10 w-full text-gray-700" class:absolute={$navbar.absolute}>
 	<div
-		class="p-5 m-5 flex justify-between lg:items-center lg:flex-row flex-col space-y-5 lg:space-y-0 rounded shadow-lg bg-white bg-opacity-100"
+		class="m-5 flex flex-col justify-between space-y-5 rounded bg-white bg-opacity-100 p-5 shadow-lg lg:flex-row lg:items-center lg:space-y-0"
 	>
-		<div class="flex justify-between items-center flex-grow lg:flex-none">
+		<div class="flex flex-grow items-center justify-between lg:flex-none">
 			<Logo />
 			<div
-				class="lg:hidden cursor-pointer w-6 h-6"
+				class="h-6 w-6 cursor-pointer lg:hidden"
 				on:click={() => (open = !open)}
 				bind:this={toggle}
 			>
@@ -46,15 +46,15 @@
 				transition:lg_slide
 			>
 				<div
-					class="flex space-y-4 lg:space-y-0 lg:space-x-4 p-4 lg:p-0 flex-col lg:flex-row w-full lg:w-auto"
+					class="flex w-full flex-col space-y-4 p-4 lg:w-auto lg:flex-row lg:space-y-0 lg:space-x-4 lg:p-0"
 				>
 					{#each pages as page}
-						<a href={page.to} class="font-semibold uppercase whitespace-nowrap">{page.name}</a>
+						<a href={page.to} class="whitespace-nowrap font-semibold uppercase">{page.name}</a>
 					{/each}
 				</div>
 				<Separator horizontal />
-				<div class="w-full flex items-center justify-center space-x-2">
-					<a href="events" class="w-6 h-6 cursor-pointer"><Icon src={Calendar} /></a>
+				<div class="flex w-full items-center justify-center space-x-2">
+					<a href="events" class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></a>
 					<LangSwitch />
 				</div>
 			</nav>

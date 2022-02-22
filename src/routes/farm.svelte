@@ -7,41 +7,41 @@
 <Hero>
 	<svelte:fragment slot="title">{$t('farm.title')}</svelte:fragment>
 	<svelte:fragment slot="description">{$t('farm.description')}</svelte:fragment>
-	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 </Hero>
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="w-full p-5 flex flex-col lg:h-screen">
-	<div class="flex-grow flex lg:flex-row flex-col">
-		<div class="lg:w-2/3 w-full lg:h-full h-96 lg:m-0 lg:p-20 lg:pr-0 order-last lg:order-first">
-			<div class="w-full h-full bg-green-200" />
+<div class="flex w-full flex-col p-5 lg:h-screen">
+	<div class="flex flex-grow flex-col lg:flex-row">
+		<div class="order-last h-96 w-full lg:order-first lg:m-0 lg:h-full lg:w-2/3 lg:p-20 lg:pr-0">
+			<div class="h-full w-full bg-green-200" />
 		</div>
-		<div class="lg:w-1/3 w-full px-5 lg:px-0 lg:pr-20 lg:py-10">
+		<div class="w-full px-5 lg:w-1/3 lg:px-0 lg:py-10 lg:pr-20">
 			<div
-				class="w-full h-full lg:rounded rounded-t bg-white shadow flex flex-col items-center space-y-5 lg:py-20 p-10 lg:px-20"
+				class="flex h-full w-full flex-col items-center space-y-5 rounded-t bg-white p-10 shadow lg:rounded lg:py-20 lg:px-20"
 			>
-				<div class="text-5xl font-cabin pb-5 text-gray-700 whitespace-nowrap">Ankhan O</div>
-				<div class="text-xl pb-5 text-gray-600 text-center">{$t('farm.ankhan.description')}</div>
-				<div class="w-full flex flex-col items-center">
+				<div class="font-cabin whitespace-nowrap pb-5 text-5xl text-gray-700">Ankhan O</div>
+				<div class="pb-5 text-center text-xl text-gray-600">{$t('farm.ankhan.description')}</div>
+				<div class="flex w-full flex-col items-center">
 					<div class="text-sm text-gray-400">{$t('farm.ankhan.born')}</div>
-					<div class="text-4xl text-gray-800 font-cabin">2008</div>
+					<div class="font-cabin text-4xl text-gray-800">2008</div>
 				</div>
-				<div class="w-full flex flex-col items-center">
+				<div class="flex w-full flex-col items-center">
 					<div class="text-sm text-gray-400">{$t('farm.ankhan.height')}</div>
-					<div class="text-4xl text-gray-800 font-cabin">156cm</div>
+					<div class="font-cabin text-4xl text-gray-800">156cm</div>
 				</div>
-				<div class="w-full flex flex-col items-center">
+				<div class="flex w-full flex-col items-center">
 					<div class="text-sm text-gray-400">{$t('farm.ankhan.father')}</div>
-					<div class="text-4xl text-gray-800 font-cabin">Antiss-W</div>
+					<div class="font-cabin text-4xl text-gray-800">Antiss-W</div>
 				</div>
-				<div class="w-full flex flex-col items-center">
+				<div class="flex w-full flex-col items-center">
 					<div class="text-sm text-gray-400">{$t('farm.ankhan.mother')}</div>
-					<div class="text-4xl text-gray-800 font-cabin">Dalisca</div>
+					<div class="font-cabin text-4xl text-gray-800">Dalisca</div>
 				</div>
-				<div class="w-full flex flex-col items-center">
+				<div class="flex w-full flex-col items-center">
 					<div class="text-sm text-gray-400">{$t('farm.ankhan.granfather')}</div>
-					<div class="text-4xl text-gray-800 font-cabin">Antinor</div>
+					<div class="font-cabin text-4xl text-gray-800">Antinor</div>
 				</div>
 			</div>
 		</div>
@@ -50,10 +50,10 @@
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="max-w-6xl mx-auto flex flex-wrap justify-center">
-	<div class="w-80 h-96 bg-green-200 m-5 mt-0 lg:mt-5" />
-	<div class="w-80 h-96 bg-green-200 m-5 mt-0 lg:mt-5" />
-	<div class="w-80 h-96 bg-green-200 m-5 mt-0 lg:mt-5" />
-	<div class="w-80 h-96 bg-green-200 m-5 mt-0 lg:mt-5" />
-	<div class="w-80 h-96 bg-green-200 m-5 mt-0 lg:mt-5" />
+<div class="mx-auto flex max-w-6xl flex-wrap justify-center">
+	<div class="m-5 mt-0 h-96 w-80 bg-green-200 lg:mt-5" />
+	<div class="m-5 mt-0 h-96 w-80 bg-green-200 lg:mt-5" />
+	<div class="m-5 mt-0 h-96 w-80 bg-green-200 lg:mt-5" />
+	<div class="m-5 mt-0 h-96 w-80 bg-green-200 lg:mt-5" />
+	<div class="m-5 mt-0 h-96 w-80 bg-green-200 lg:mt-5" />
 </div>

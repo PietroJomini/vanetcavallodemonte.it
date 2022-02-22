@@ -28,43 +28,43 @@
 		keyboard: false
 	}}
 >
-	<SplideSlide><div class="w-screen h-screen bg-blue-400" /></SplideSlide>
-	<SplideSlide><div class="w-screen h-screen bg-yellow-400" /></SplideSlide>
-	<SplideSlide><div class="w-screen h-screen bg-green-400" /></SplideSlide>
+	<SplideSlide><div class="h-screen w-screen bg-blue-400" /></SplideSlide>
+	<SplideSlide><div class="h-screen w-screen bg-yellow-400" /></SplideSlide>
+	<SplideSlide><div class="h-screen w-screen bg-green-400" /></SplideSlide>
 </Splide>
 
-<div class="text-center p-10 pt-20 max-w-6xl mx-auto">
-	<div class="p-4 text-4xl font-cabin mt-2 text-gray-600">{$t('home.title.1')}</div>
+<div class="mx-auto max-w-6xl p-10 pt-20 text-center">
+	<div class="font-cabin mt-2 p-4 text-4xl text-gray-600">{$t('home.title.1')}</div>
 	<Separator vertical weight="400" width="2" className="h-20 mx-auto my-4" />
-	<div class="text-7xl mb-4 font-cabin text-gray-800">{$t('home.title.2')}</div>
-	<div class="max-w-4xl mx-auto text-gray-700 font-cabin">{$t('home.title.3')}</div>
+	<div class="font-cabin mb-4 text-7xl text-gray-800">{$t('home.title.2')}</div>
+	<div class="font-cabin mx-auto max-w-4xl text-gray-700">{$t('home.title.3')}</div>
 </div>
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="p-10 pt-0 w-full">
+<div class="w-full p-10 pt-0">
 	<Card>
 		<svelte:fragment slot="image">
-			<div class="w-full h-full bg-green-200" />
+			<div class="h-full w-full bg-green-200" />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">
 			{$t('home.cards.1.content')}
 			<a
-				class="block text-sm underline font-bold italic mt-3 cursor-pointer"
+				class="mt-3 block cursor-pointer text-sm font-bold italic underline"
 				href="/{$t('home.cards.1.page')}">{$t('home.discover')} ></a
 			>
 		</svelte:fragment>
 	</Card>
 	<Card flip>
 		<svelte:fragment slot="image">
-			<div class="w-full h-full bg-green-200" />
+			<div class="h-full w-full bg-green-200" />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">
 			{$t('home.cards.2.content')}
 			<a
-				class="block text-sm underline font-bold italic mt-3 cursor-pointer"
+				class="mt-3 block cursor-pointer text-sm font-bold italic underline"
 				href="/{$t('home.cards.2.page')}">{$t('home.discover')} ></a
 			>
 		</svelte:fragment>

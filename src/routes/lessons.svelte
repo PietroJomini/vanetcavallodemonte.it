@@ -9,19 +9,19 @@
 <Hero>
 	<svelte:fragment slot="title">{$t('lessons.title')}</svelte:fragment>
 	<svelte:fragment slot="description">{$t('lessons.description')}</svelte:fragment>
-	<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 </Hero>
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="p-5 max-w-7xl mx-auto">
-	<div class="text-4xl font-cabin text-gray-800 text-center">{$t('lessons.prices')}</div>
+<div class="mx-auto max-w-7xl p-5">
+	<div class="font-cabin text-center text-4xl text-gray-800">{$t('lessons.prices')}</div>
 	<div
-		class="mt-12 p-4 flex flex-col lg:flex-row lg:space-y-0 space-y-4 lg:space-x-4 justify-center"
+		class="mt-12 flex flex-col justify-center space-y-4 p-4 lg:flex-row lg:space-y-0 lg:space-x-4"
 	>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				1 <div class="text-3xl text-gray-300">h</div>
@@ -33,7 +33,7 @@
 
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				5 x 1 <div class="text-3xl text-gray-300">h</div>
@@ -45,7 +45,7 @@
 
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="bg-green-200 w-full h-80 hidden lg:block" />
+				<div class="hidden h-80 w-full bg-green-200 lg:block" />
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				10 x 1 <div class="text-3xl text-gray-300">h</div>
@@ -59,19 +59,19 @@
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="p-10 pt-0 w-full">
+<div class="w-full p-10 pt-0">
 	<Card>
-		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.1.content')}</svelte:fragment>
 	</Card>
 	<Card flip>
-		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.2.content')}</svelte:fragment>
 	</Card>
 	<Card>
-		<svelte:fragment slot="image"><div class="w-full h-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('lessons.cards.3.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('lessons.cards.3.content')}</svelte:fragment>
 	</Card>

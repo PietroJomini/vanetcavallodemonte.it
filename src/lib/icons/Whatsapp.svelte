@@ -1,5 +1,5 @@
 <svg
-	class="w-full h.full"
+	class="h.full w-full"
 	version="1.1"
 	id="Layer_1"
 	xmlns="http://www.w3.org/2000/svg"
