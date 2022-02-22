@@ -6,7 +6,7 @@ const config = {
 		{
 			locale: 'it',
 			key: 'home',
-			routes: ['/'],
+			routes: ['/', ''],
 			loader: async () => await import(`./it/home.json`)
 		},
 		{
@@ -56,8 +56,15 @@ const config = {
 			key: 'prices',
 			routes: ['/prices'],
 			loader: async () => await import(`./it/prices.json`)
+		},
+		{
+			locale: 'en',
+			key: 'home',
+			routes: ['/', ''],
+			loader: async () => await import(`./en/home.json`)
 		}
 	]
 };
 
+export const defaultLocale = 'it';
 export const { t, locale, locales, loading, loadTranslations } = new i18n(config);

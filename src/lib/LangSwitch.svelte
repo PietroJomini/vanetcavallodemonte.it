@@ -2,8 +2,16 @@
 	import OutClick from 'svelte-outclick';
 	import { Icon } from '@steeze-ui/svelte-icon';
 	import { GlobeAlt } from '@steeze-ui/heroicons';
+	import Link from './Link.svelte';
+	import { page } from '$app/stores';
 
-	let langs = ['Italiano', 'English', 'Français'];
+	$: ({ stuff } = $page);
+
+	let langs = [
+		{ name: 'Italiano', locale: 'it' },
+		{ name: 'English', locale: 'en' }
+	];
+
 	let open = false;
 </script>
 
@@ -15,7 +23,11 @@
 			<div class="absolute right-0 top-full w-full px-5 lg:w-48">
 				<div class="-mt-4 flex w-full flex-col rounded bg-white p-2 shadow-lg lg:-mt-4">
 					{#each langs as lang}
-						<a href="/" class="p-2 text-xs font-semibold uppercase  text-gray-700">{lang}</a>
+						<Link locale={lang.locale} to={stuff.route}>
+							<span class="cursor-pointer p-2 text-xs font-semibold uppercase text-gray-700">
+								{lang.name}
+							</span>
+						</Link>
 					{/each}
 				</div>
 			</div>

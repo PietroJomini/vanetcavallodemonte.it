@@ -1,20 +1,20 @@
 <script context="module">
-	import { locale, loadTranslations } from '$lib/translations';
+	import { loadTranslations, locale } from '$lib/translations';
 
+	/** @type {import('@sveltejs/kit').Load} */
 	export const load = async ({ url }) => {
 		const { pathname } = url;
-		await loadTranslations(locale.get() || 'it', pathname);
-		return {};
+		const lang = `${pathname.match(/\w+?(?=\/|$)/) || ''}`;
+		const route = pathname.replace(new RegExp(`^/${lang}`), '');
+		await loadTranslations(lang, route);
+
+		locale.set(lang); // <== keep this just before the `return` – see https://github.com/sveltekit-i18n/lib/issues/32
+		return { stuff: { route, lang } };
 	};
 </script>
 
 <script>
 	import '../app.css';
-	import Navbar from '$lib/Navbar.svelte';
-	import { onMount } from 'svelte';
-
-	onMount(() => document.querySelector('body').classList.add('bg-gray-100'));
 </script>
 
-<Navbar />
 <slot />

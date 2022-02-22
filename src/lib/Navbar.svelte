@@ -7,16 +7,17 @@
 	import LangSwitch from './LangSwitch.svelte';
 	import Separator from '$lib/Separator.svelte';
 	import { navbar } from './stores';
+	import Link from './Link.svelte';
 
 	const pages = [
-		{ name: 'passeggiate', to: '/ride' },
-		{ name: 'lezioni', to: '/lessons' },
-		{ name: 'bambini', to: '/childs' },
-		{ name: 'trekking', to: '/trekking' },
-		{ name: 'campi estivi', to: '/camps' },
-		{ name: 'allevamento', to: '/farm' },
-		{ name: 'prezzi', to: '/prices' },
-		{ name: 'contatti', to: '/contacts' }
+		{ name: 'passeggiate', to: `ride` },
+		{ name: 'lezioni', to: `lessons` },
+		{ name: 'bambini', to: `childs` },
+		{ name: 'trekking', to: `trekking` },
+		{ name: 'campi estivi', to: `camps` },
+		{ name: 'allevamento', to: `farm` },
+		{ name: 'prezzi', to: `prices` },
+		{ name: 'contatti', to: `contacts` }
 	];
 
 	let open = false;
@@ -49,7 +50,9 @@
 					class="flex w-full flex-col space-y-4 p-4 lg:w-auto lg:flex-row lg:space-y-0 lg:space-x-4 lg:p-0"
 				>
 					{#each pages as page}
-						<a href={page.to} class="whitespace-nowrap font-semibold uppercase">{page.name}</a>
+						<Link to={page.to}>
+							<span class="whitespace-nowrap font-semibold uppercase">{page.name}</span>
+						</Link>
 					{/each}
 				</div>
 				<Separator horizontal />
