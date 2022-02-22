@@ -38,6 +38,18 @@ const config = {
 			key: 'camps',
 			routes: ['/camps', '/camps/6-11', '/camps/12-17'],
 			loader: async () => await import(`./it/camps.json`)
+		},
+		{
+			locale: 'it',
+			key: 'farm',
+			routes: ['/farm'],
+			loader: async () => await import(`./it/farm.json`)
+		},
+		{
+			locale: 'it',
+			key: 'contacts',
+			routes: ['/contacts'],
+			loader: async () => await import(`./it/contacts.json`)
 		}
 	]
 };

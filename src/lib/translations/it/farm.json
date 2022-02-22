@@ -1,0 +1,12 @@
+{
+	"title": "Allevamento Haflinger",
+	"description": "Da trent'anni alleviamo cavalli di razza avelignese porgendo particolare attenzione nel selezionare animali dal carattere dolce e mansueto adatti al lavoro con principianti e bambini. Questi cavalli conservano le caratteristiche rustiche e resistenti tipiche del cavallo avelignese riuscendo allo stesso tempo ad offrire grandi soddisfazioni agli amanti dell'equitazione. Gli animali passano la maggior parte dell'anno all'aperto, nei pascoli alpini che circondano la borgata, sviluppando la loro attitudine ai cammini di montagna.",
+	"ankhan": {
+		"description": "Stallone giovane con ottimi caratteri tipici ed armonia, genealogia eccellente; indole estremamente docile.",
+		"born": "Anno di nascita",
+		"height": "Altezza al garrese",
+		"father": "Padre",
+		"mother": "Madre",
+		"granfather": "Nonno"
+	}
+}
