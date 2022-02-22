@@ -1,28 +1,24 @@
-import { defaultLocale, locales } from '$lib/translations';
+import { hook as i18n } from '$lib/translations';
+import { session } from '$lib/auth';
+import { parse } from 'cookie';
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {
-	const {
-		url: { pathname }
-	} = event;
+	const { failed, redirect, apply } = i18n({ pathname: event?.url?.pathname });
+	if (failed) return redirect;
 
-	const supportedLocales = locales.get();
+	const cookies = event?.request?.headers?.get('cookie');
+	const { session_id } = parse(cookies || '');
+	event.locals.session_id = session_id;
 
-	let locale = supportedLocales.find(
-		(l) => l === `${pathname.match(/[^/]+?(?=\/|$)/)}`.toLowerCase()
-	);
+	return await resolve(event, { transformPage: apply });
+};
 
-	if (!locale) {
-		const path = pathname.match(/\/.*?\/(.*)/);
-		console.log(path && path[1], defaultLocale);
-		return new Response(undefined, {
-			headers: { location: `/${defaultLocale}/${path ? path[1] : ''}` },
-			status: 301
-		});
-	}
+/** @type {import('@sveltejs/kit').Handle} */
+export const getSession = (event) => {
+	const id = event?.locals?.session_id;
+	const exists = session.get(id);
+	const auth = (id && exists) !== undefined;
 
-	// Add html `lang` attribute
-	const response = await resolve(event);
-	const body = await response.text();
-	return new Response(`${body}`.replace(/<html.*>/, `<html lang="${locale}">`), response);
+	return { auth, id };
 };

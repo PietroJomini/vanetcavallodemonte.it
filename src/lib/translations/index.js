@@ -1,4 +1,5 @@
 import i18n from 'sveltekit-i18n';
+import { createHook } from './hook.js';
 
 /** @type {import('sveltekit-i18n').Config} */
 const config = {
@@ -67,4 +68,6 @@ const config = {
 };
 
 export const defaultLocale = 'it';
+export const exceptions = ['api', 'admin'];
 export const { t, locale, locales, loading, loadTranslations } = new i18n(config);
+export const hook = createHook({ locales, defaultLocale, exceptions });
