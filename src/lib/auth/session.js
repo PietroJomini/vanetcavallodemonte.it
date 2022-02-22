@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+import { serialize } from 'cookie';
 
 let sessions = [];
 
@@ -16,4 +17,11 @@ export const del = (id) => {
 	sessions = sessions.filter((session) => session.id !== id);
 };
 
-export const all = () => [...sessions];
+export const cookie = (id) => ({
+	'Set-Cookie': serialize('session_id', id, {
+		path: '/',
+		httpOnly: true,
+		sameSite: 'strict',
+		maxAge: 60 * 60 * 24 * 7
+	})
+});
