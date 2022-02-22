@@ -6,11 +6,12 @@
 	export let width = 1;
 	export let className = '';
 	export let pad = false;
+	export let grow = false;
 
 	if (vertical && horizontal) horizontal = false;
 </script>
 
-<div class={pad ? 'p-10 lg:py-20 max-w-6xl mx-auto' : ''}>
+<div class={pad ? 'p-10 lg:py-20 max-w-6xl mx-auto' : ''} class:flex-grow={grow}>
 	<div
 		class={className}
 		class:w-0={vertical}

@@ -50,6 +50,12 @@ const config = {
 			key: 'contacts',
 			routes: ['/contacts'],
 			loader: async () => await import(`./it/contacts.json`)
+		},
+		{
+			locale: 'it',
+			key: 'prices',
+			routes: ['/prices'],
+			loader: async () => await import(`./it/prices.json`)
 		}
 	]
 };

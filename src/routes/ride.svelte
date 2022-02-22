@@ -96,18 +96,21 @@
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
-<div class="p-5 max-w-6xl mx-auto divide-y divide-gray-200 mb-40">
+<div class="p-5 max-w-6xl mx-auto divide-y divide-gray-300 mb-40">
 	<div class="text-4xl font-cabin pb-10 text-gray-800 text-center">
 		{$t('ride.faq_name')}
 	</div>
 
 	<Collapsable>
-		<svelte:fragment slot="title">{$t('ride.faq.1.title')}</svelte:fragment>
-		<svelte:fragment slot="content">{$t('ride.faq.1.content')}</svelte:fragment>
+		<div class="text-gray-800 font-cabin" slot="title">{$t('ride.faq.1.title')}</div>
+		<div class="text-gray-700 font-cabin px-3 pb-6 pt-0" slot="content">
+			{$t('ride.faq.1.content')}
+		</div>
 	</Collapsable>
-
 	<Collapsable>
-		<svelte:fragment slot="title">{$t('ride.faq.2.title')}</svelte:fragment>
-		<svelte:fragment slot="content">{$t('ride.faq.2.content')}</svelte:fragment>
+		<div class="text-gray-800 font-cabin" slot="title">{$t('ride.faq.2.title')}</div>
+		<div class="text-gray-700 font-cabin px-3 pb-6 pt-0" slot="content">
+			{$t('ride.faq.2.content')}
+		</div>
 	</Collapsable>
 </div>

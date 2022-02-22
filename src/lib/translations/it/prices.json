@@ -1,0 +1,25 @@
+{
+	"title": "I nostri prezzi",
+	"ride": {
+		"title": "Passeggiate",
+		"2": "2 ore",
+		"3": "3 ore",
+		"4": "4 ore",
+		"5": "5 ore"
+	},
+	"lessons": {
+		"title": "Lezioni",
+		"1": "1 lezione",
+		"5": "5 lezioni",
+		"10": "10 lezioni"
+	},
+	"camps": {
+		"title": "Campi estivi",
+		"6_11": "Per bambini dai 6 agli 11 anni",
+		"12_17": "Per bambini dai 12 ai 17 anni"
+	},
+	"childs": {
+		"title": "Avvicinamenti",
+		"1": "Avvicinamento"
+	}
+}
