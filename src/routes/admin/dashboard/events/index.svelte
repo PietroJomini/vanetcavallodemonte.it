@@ -1,129 +1,20 @@
+<script context="module">
+	/** @type {import('@sveltejs/kit').Load} */
+	export async function load({ fetch }) {
+		const response = await fetch('/api/events');
+		const { events } = await response.json();
+		return { props: { events } };
+	}
+</script>
+
 <script>
 	import { Plus } from '@steeze-ui/heroicons';
 
 	import { Icon } from '@steeze-ui/svelte-icon';
-	import Card from '$lib/admin/Card.svelte';
-	import Table from '$lib/admin/Table.svelte';
+	import Card from '$lib/components/admin/Card.svelte';
+	import Table from '$lib/components/admin/Table.svelte';
 
-	let types = [
-		{ key: 'bear', selected: true, accent: 'text-teal-500' },
-		{ key: 'lacking', selected: false, accent: 'text-slate-500' },
-		{ key: 'secretary', selected: false, accent: 'text-amber-500' },
-		{ key: 'medical', selected: false, accent: 'text-lime-500' },
-		{ key: 'language', selected: true, accent: 'text-emerald-500' },
-		{ key: 'haunt', selected: true, accent: 'text-cyan-500' },
-		{ key: 'feeling', selected: false, accent: 'text-indigo-500' },
-		{ key: 'red', selected: true, accent: 'text-pink-500' },
-		{ key: 'greasy', selected: false, accent: 'text-rose-500' },
-		{ key: 'jaded', selected: true, accent: 'text-sky-500' },
-		{ key: 'berry', selected: false, accent: 'text-cyan-400' },
-		{ key: 'mist', selected: false, accent: 'text-red-500' }
-	];
-
-	const getRandomTypes = () => {
-		let n = Math.floor(Math.random() * 4);
-		let t = [];
-		while (t.length < n) t.push(types[Math.floor(Math.random() * types.length)]);
-		return t;
-	};
-
-	const events = [
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date('24 Feb 2022'),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso con un nome esageratamente lunghissimissimo',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		}
-	].map((e, i) => ({ ...e, title: e.title + ` ${i}`, types: getRandomTypes() }));
+	export let events = [];
 </script>
 
 <Card>
@@ -135,17 +26,22 @@
 		<a href="/admin/dashboard/events/new"><Icon src={Plus} /></a>
 	</div>
 	<div slot="content">
-		<Table
-			head={['Titolo', 'Descrizione', 'Inizio', 'Fine']}
-			rows={events.map((event, i) => ({
-				items: [
-					event.title,
-					event.description,
-					event.start.toLocaleDateString('it-IT'),
-					event.end.toLocaleDateString('it-IT')
-				],
-				to: '/admin/dashboard/events/edit'
-			}))}
-		/>
+		{#if events.length > 0}
+			<Table
+				head={['Titolo', 'Descrizione', 'Link', 'Inizio', 'Fine']}
+				rows={events.map((event) => ({
+					items: [
+						event.title,
+						event.description,
+						event.link,
+						event.start && new Date(event.start).toLocaleDateString('it-IT'),
+						event.end && new Date(event.end).toLocaleDateString('it-IT')
+					],
+					to: `/admin/dashboard/events/edit/${event._id}`
+				}))}
+			/>
+		{:else}
+			<div class="w-full text-gray-400 italic">Ancora nessun evento pianificato</div>
+		{/if}
 	</div>
 </Card>

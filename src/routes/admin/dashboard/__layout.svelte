@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import Navbar from '$lib/admin/Navbar.svelte';
+	import Navbar from '$lib/components/admin/Navbar.svelte';
 	import { Calendar } from '@steeze-ui/heroicons';
 
 	const tabs = [
