@@ -1,5 +1,5 @@
 <script>
-	import { locale as currentLocale } from './translations';
+	import { locale as currentLocale } from '$lib/translations';
 	export let to = '';
 	export let locale;
 

@@ -5,8 +5,8 @@
 	import '@splidejs/splide/dist/css/splide.min.css';
 
 	import { navbar } from '$lib/stores.js';
-	import Separator from '$lib/Separator.svelte';
-	import Card from '$lib/Card.svelte';
+	import Separator from '$lib/components/Separator.svelte';
+	import Card from '$lib/components/Card.svelte';
 
 	onMount(() => navbar.update((v) => ({ ...v, absolute: true })));
 	onDestroy(() => navbar.update((v) => ({ ...v, absolute: false })));

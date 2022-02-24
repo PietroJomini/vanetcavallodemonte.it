@@ -1,4 +1,4 @@
-import { admin } from './keys.json';
+import { admin } from '$lib/config/keys.json';
 export * as session from './session.js';
 
 export const auth = (password) => password === admin;

@@ -1,6 +1,6 @@
 <script>
-	import Collapsable from '$lib/Collapsable.svelte';
-	import Separator from '$lib/Separator.svelte';
+	import Collapsable from '$lib/components/Collapsable.svelte';
+	import Separator from '$lib/components/Separator.svelte';
 	import { t } from '$lib/translations';
 
 	const tree = [

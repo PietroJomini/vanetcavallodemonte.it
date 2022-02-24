@@ -1,7 +1,7 @@
 <script>
-	import Hero from '$lib/Hero.svelte';
+	import Hero from '$lib/components/Hero.svelte';
 	import { t, locale } from '$lib/translations';
-	import Link from '$lib/Link.svelte';
+	import Link from '$lib/components/Link.svelte';
 </script>
 
 <Hero>

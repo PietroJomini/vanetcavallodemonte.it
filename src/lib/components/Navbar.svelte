@@ -5,8 +5,8 @@
 
 	import Logo from './Logo.svelte';
 	import LangSwitch from './LangSwitch.svelte';
-	import Separator from '$lib/Separator.svelte';
-	import { navbar } from './stores';
+	import Separator from './Separator.svelte';
+	import { navbar } from '$lib/stores';
 	import Link from './Link.svelte';
 
 	const pages = [

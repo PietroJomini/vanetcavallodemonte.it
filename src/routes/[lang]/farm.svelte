@@ -1,6 +1,6 @@
 <script>
-	import Hero from '$lib/Hero.svelte';
-	import Separator from '$lib/Separator.svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import Separator from '$lib/components/Separator.svelte';
 	import { t } from '$lib/translations';
 </script>
 

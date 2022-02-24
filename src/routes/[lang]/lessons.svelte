@@ -1,8 +1,8 @@
 <script>
-	import Card from '$lib/Card.svelte';
-	import PriceCard from '$lib/PriceCard.svelte';
-	import Separator from '$lib/Separator.svelte';
-	import Hero from '$lib/Hero.svelte';
+	import Card from '$lib/components/Card.svelte';
+	import PriceCard from '$lib/components/PriceCard.svelte';
+	import Separator from '$lib/components/Separator.svelte';
+	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/translations';
 </script>
 
