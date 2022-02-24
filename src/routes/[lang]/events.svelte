@@ -1,18 +1,27 @@
+<script context="module">
+	/** @type {import('@sveltejs/kit').Load} */
+	export async function load({ fetch }) {
+		const response = await fetch('/api/events');
+		const { events } = await response.json();
+		return { props: { events } };
+	}
+</script>
+
 <script>
 	import { slide, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 
 	let types = [
-		{ key: 'bear', selected: true, accent: 'text-teal-500' },
+		{ key: 'bear', selected: false, accent: 'text-teal-500' },
 		{ key: 'lacking', selected: false, accent: 'text-slate-500' },
 		{ key: 'secretary', selected: false, accent: 'text-amber-500' },
 		{ key: 'medical', selected: false, accent: 'text-lime-500' },
-		{ key: 'language', selected: true, accent: 'text-emerald-500' },
-		{ key: 'haunt', selected: true, accent: 'text-cyan-500' },
+		{ key: 'language', selected: false, accent: 'text-emerald-500' },
+		{ key: 'haunt', selected: false, accent: 'text-cyan-500' },
 		{ key: 'feeling', selected: false, accent: 'text-indigo-500' },
-		{ key: 'red', selected: true, accent: 'text-pink-500' },
+		{ key: 'red', selected: false, accent: 'text-pink-500' },
 		{ key: 'greasy', selected: false, accent: 'text-rose-500' },
-		{ key: 'jaded', selected: true, accent: 'text-sky-500' },
+		{ key: 'jaded', selected: false, accent: 'text-sky-500' },
 		{ key: 'berry', selected: false, accent: 'text-cyan-400' },
 		{ key: 'mist', selected: false, accent: 'text-red-500' }
 	];
@@ -26,88 +35,13 @@
 		return t;
 	};
 
-	const events = [
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date('24 Feb 2022'),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso con un nome esageratamente lunghissimissimo',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet mauris ut sodales ornare. Quisque viverra scelerisque est nec dictum. Vivamus a tellus eget leo aliquet sodales vel eget purus. Aliquam a erat odio. Maecenas mauris sapien, lobortis et leo et, condimentum ultricies dui. Fusce tempor tincidunt lacus, venenatis vulputate neque volutpat et. Nullam id eros a nibh eleifend fermentum ut nec augue. Praesent mattis ex vitae erat interdum dictum. ',
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		},
-		{
-			title: 'Evento a caso',
-			description: "Descrizione dell'evento",
-			start: new Date(),
-			end: new Date(),
-			types: ['hey', 'x-22'],
-			link: ''
-		}
-	].map((e, i) => ({ ...e, title: e.title + ` ${i}`, types: getRandomTypes() }));
+	export let events;
+	$: eventsp = events.map((e) => ({
+		...e,
+		start: new Date(e.start),
+		end: e.end && new Date(e.end),
+		types: getRandomTypes()
+	}));
 
 	const months = [
 		'Gen',
@@ -123,6 +57,7 @@
 		'Nov',
 		'Dic'
 	];
+
 	const formatDate = (date) => `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 </script>
 
@@ -172,9 +107,9 @@
 		{/if}
 	</div>
 
-	{#each selected.length === 0 ? events : events.filter( (event) => event.types.some((type) => types.filter(({ key }) => key === type.key)[0].selected) ) as event (event.title)}
+	{#each selected.length === 0 ? eventsp : eventsp.filter( (event) => event.types.some((type) => types.filter(({ key }) => key === type.key)[0].selected) ) as event (event.title)}
 		<div
-			class="m-2 flex h-96 items-end rounded-xl bg-emerald-200 p-2 shadow-md"
+			class="m-2 flex h-96 items-end rounded-xl bg-emerald-200  p-2 shadow-md"
 			transition:fade={{ duration: 100 }}
 			animate:flip={{ duration: 200 }}
 		>
@@ -182,7 +117,8 @@
 				<span class="font-cabin mt-6 mb-2 text-center text-2xl">{event.title}</span>
 				<div class="p-2 text-sm text-gray-400">
 					{formatDate(event.start)}
-					{#if event.end.getTime() !== event.start.getTime()} - {formatDate(event.end)}{/if}
+					{#if event.end && event.end.getTime() !== event.start.getTime()}
+						- {formatDate(event.end)}{/if}
 				</div>
 				<div
 					class={`flex flex-grow items-end overflow-hidden p-2 text-gray-700 text-center ${

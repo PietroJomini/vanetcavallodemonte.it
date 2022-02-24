@@ -3,6 +3,7 @@ import { ObjectId } from 'mongodb';
 
 export const get = handler({
 	schema: 'event',
+	guard: false,
 	action: async ({ db, params: { id } }) => ({
 		events: await (await db.find(id ? { _id: ObjectId(id) } : {})).toArray()
 	})
