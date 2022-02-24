@@ -3,10 +3,8 @@
 </script>
 
 <script>
-	import { session } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+
+	onMount(() => goto('/admin/dashboard'));
 </script>
-
-Admin Dashbaord! Id: {$session.id}
-
-<a href="/api/auth/logout">Logout</a>
-<a href="/admin/dashboard">Dashboard</a>

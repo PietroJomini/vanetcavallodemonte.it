@@ -57,7 +57,7 @@
 				</div>
 				<Separator horizontal />
 				<div class="flex w-full items-center justify-center space-x-2">
-					<a href="events" class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></a>
+					<Link to="events"><div class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></div></Link>
 					<LangSwitch />
 				</div>
 			</nav>

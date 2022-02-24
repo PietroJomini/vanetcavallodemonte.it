@@ -4,5 +4,5 @@ module.exports = {
 		extend: {},
 		fontFamily: {}
 	},
-	plugins: [require('@tailwindcss/line-clamp')]
+	plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')]
 };

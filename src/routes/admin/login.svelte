@@ -1,11 +1,15 @@
 <script>
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	const params = new URLSearchParams($page.url.search);
 	const error = params.get('e') === 'true';
 
 	const redirect = '/admin';
 	const failure = '/admin/login?e=true';
+
+	let ifield;
+	onMount(() => ifield.focus());
 </script>
 
 <div class="flex h-screen w-screen items-center justify-center">
@@ -23,6 +27,7 @@
 					name="password"
 					placeholder="password"
 					class="rounded border border-gray-300 bg-white p-3 focus:outline-none"
+					bind:this={ifield}
 				/>
 				{#if error}
 					<span class="pt-2 text-xs text-red-500"><i>Incorrect password</i></span>
