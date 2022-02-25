@@ -11,11 +11,15 @@
 </script>
 
 <script>
-	import { Check, Trash, X } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
-	import Card from '$lib/components/admin/Card.svelte';
 	import { goto } from '$app/navigation';
+	import Card from '$lib/components/admin/Card.svelte';
+	import X from '$lib/components/admin/icons/X.svelte';
+	import Trash from '$lib/components/admin/icons/Trash.svelte';
+	import Check from '$lib/components/admin/icons/Check.svelte';
+	import Text from '$lib/components/admin/input/Text.svelte';
+	import Color from '$lib/components/admin/input/Color.svelte';
 	import Modal from '$lib/components/admin/Modal.svelte';
+	import Confirm from '$lib/components/admin/input/Confirm.svelte';
 
 	const accents = [
 		{ name: 'slate', value: '#64748B' },
@@ -58,83 +62,23 @@
 
 <Card>
 	<div slot="title">Modifica tag</div>
-	<div slot="actions">
-		<div class="flex">
-			<div
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-emerald-500"
-				on:click={submit}
-			>
-				<Icon src={Check} />
-			</div>
-			<a
-				href="/admin/dashboard/events"
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-red-500"
-			>
-				<Icon src={X} />
-			</a>
-			<div
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-red-500"
-				on:click={() => (modal = true)}
-			>
-				<Icon src={Trash} />
-			</div>
-			<Modal bind:show={modal}>
-				<div class="flex w-80 flex-col rounded bg-white p-3">
-					<div class="border-b py-2 text-xl">Eliminare il tag?</div>
-					<div class="mt-1 text-sm text-red-500">Attenzione: azione irreversibile</div>
-					<div class="mt-4 flex space-x-2">
-						<div
-							class="flex-grow cursor-pointer rounded border p-3 px-5 text-center text-gray-400 transition hover:text-emerald-500"
-							on:click={() => (modal = false)}
-						>
-							NO
-						</div>
-						<div
-							class="flex-grow cursor-pointer rounded border p-3 px-5 text-center text-gray-400 transition hover:text-red-500"
-							on:click={del}
-						>
-							SI
-						</div>
-					</div>
-				</div>
-			</Modal>
-		</div>
+	<div slot="actions" class="flex">
+		<Check on:click={submit} />
+		<X on:click={() => goto('/admin/dashboard/events')} />
+		<Trash on:click={() => (modal = true)} />
+		<Modal bind:show={modal}>
+			<Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} />
+		</Modal>
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
-			<div>
-				<span class={error && !tag.name ? 'text-red-500' : 'text-gray-700'}>Nome *</span>
-				<input
-					type="text"
-					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					class:border-red-500={error && !tag.name}
-					placeholder=""
-					bind:value={tag.name}
-				/>
-			</div>
-			<div>
-				<span class={error && !tag.accent ? 'text-red-500' : 'text-gray-700'}>Colore *</span>
-				<div
-					class="bored-transparent mt-1 flex cursor-pointer rounded-md border bg-gray-100 p-3"
-					class:border-red-500={error && !tag.accent}
-					class:border-gray-500={open}
-					on:click={() => (open = !open)}
-				>
-					{#if open}
-						{#each accents as accent}
-							<div
-								class="mr-3 h-8 w-8 rounded"
-								style={`background-color: ${accent.value}`}
-								on:click={() => (tag.accent = accent.value)}
-							/>
-						{/each}
-					{:else if tag.accent}
-						<div class="mr-3 h-8 w-8 rounded" style={`background-color: ${tag.accent}`} />
-					{:else}
-						<div class=" text-gray-400">Seleziona un colore</div>
-					{/if}
-				</div>
-			</div>
+			<Text name="Nome" required error={error && !tag.name} bind:value={tag.name} />
+			<Color
+				colors={accents.map(({ value }) => value)}
+				bind:value={tag.accent}
+				required
+				error={error && !tag.accent}
+			/>
 		</div>
 	</div>
 </Card>

@@ -1,8 +1,10 @@
 <script>
-	import { Check, X } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
-	import Card from '$lib/components/admin/Card.svelte';
 	import { goto } from '$app/navigation';
+	import Card from '$lib/components/admin/Card.svelte';
+	import X from '$lib/components/admin/icons/X.svelte';
+	import Check from '$lib/components/admin/icons/Check.svelte';
+	import Text from '$lib/components/admin/input/Text.svelte';
+	import Color from '$lib/components/admin/input/Color.svelte';
 
 	const accents = [
 		{ name: 'slate', value: '#64748B' },
@@ -18,19 +20,15 @@
 		{ name: 'rose', value: '#F43F5E' }
 	];
 
-	let tag = {
-		name: undefined,
-		accent: undefined
-	};
-
+	let name;
+	let accent;
 	let error = false;
-	let open = false;
 
 	const submit = async () => {
-		if (tag.name && tag.accent) {
+		if (name && accent) {
 			await fetch('/api/events/tags', {
 				method: 'POST',
-				body: JSON.stringify(tag)
+				body: JSON.stringify({ name, accent })
 			});
 
 			goto('/admin/dashboard/events');
@@ -42,57 +40,19 @@
 
 <Card>
 	<div slot="title">Crea un nuovo evento</div>
-	<div slot="actions">
-		<div class="flex">
-			<div
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-emerald-500"
-				on:click={submit}
-			>
-				<Icon src={Check} />
-			</div>
-			<a
-				href="/admin/dashboard/events"
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-red-500"
-			>
-				<Icon src={X} />
-			</a>
-		</div>
+	<div slot="actions" class="flex">
+		<Check on:click={submit} />
+		<X on:click={() => goto('/admin/dashboard/events')} />
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
-			<div>
-				<span class={error && !tag.name ? 'text-red-500' : 'text-gray-700'}>Nome *</span>
-				<input
-					type="text"
-					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					class:border-red-500={error && !tag.name}
-					placeholder=""
-					bind:value={tag.name}
-				/>
-			</div>
-			<div>
-				<span class={error && !tag.accent ? 'text-red-500' : 'text-gray-700'}>Colore *</span>
-				<div
-					class="bored-transparent mt-1 flex cursor-pointer rounded-md border bg-gray-100 p-3"
-					class:border-red-500={error && !tag.accent}
-					class:border-gray-500={open}
-					on:click={() => (open = !open)}
-				>
-					{#if open}
-						{#each accents as accent}
-							<div
-								class="mr-3 h-8 w-8 rounded"
-								style={`background-color: ${accent.value}`}
-								on:click={() => (tag.accent = accent.value)}
-							/>
-						{/each}
-					{:else if tag.accent}
-						<div class="mr-3 h-8 w-8 rounded" style={`background-color: ${tag.accent}`} />
-					{:else}
-						<div class=" text-gray-400">Seleziona un colore</div>
-					{/if}
-				</div>
-			</div>
+			<Text name="Nome" required error={error && !name} bind:value={name} />
+			<Color
+				colors={accents.map(({ value }) => value)}
+				bind:value={accent}
+				required
+				error={error && !accent}
+			/>
 		</div>
 	</div>
 </Card>

@@ -11,11 +11,16 @@
 </script>
 
 <script>
-	import { Check, Trash, X } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
-	import Card from '$lib/components/admin/Card.svelte';
 	import { goto } from '$app/navigation';
+	import Card from '$lib/components/admin/Card.svelte';
+	import X from '$lib/components/admin/icons/X.svelte';
+	import Trash from '$lib/components/admin/icons/Trash.svelte';
+	import Check from '$lib/components/admin/icons/Check.svelte';
+	import Text from '$lib/components/admin/input/Text.svelte';
+	import Textarea from '$lib/components/admin/input/Textarea.svelte';
+	import DatePicker from '$lib/components/admin/input/DatePicker.svelte';
 	import Modal from '$lib/components/admin/Modal.svelte';
+	import Confirm from '$lib/components/admin/input/Confirm.svelte';
 
 	export let id;
 	export let events;
@@ -47,98 +52,30 @@
 
 <Card>
 	<div slot="title">Modifica evento</div>
-	<div slot="actions">
-		<div class="flex">
-			<div
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-emerald-500"
-				on:click={submit}
-			>
-				<Icon src={Check} />
-			</div>
-			<a
-				href="/admin/dashboard/events"
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-red-500"
-			>
-				<Icon src={X} />
-			</a>
-			<div
-				class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-red-500"
-				on:click={() => (modal = true)}
-			>
-				<Icon src={Trash} />
-			</div>
-			<Modal bind:show={modal}>
-				<div class="flex w-80 flex-col rounded bg-white p-3">
-					<div class="border-b py-2 text-xl">Eliminare l'evento?</div>
-					<div class="mt-1 text-sm text-red-500">Attenzione: azione irreversibile</div>
-					<div class="mt-4 flex space-x-2">
-						<div
-							class="flex-grow cursor-pointer rounded border p-3 px-5 text-center text-gray-400 transition hover:text-emerald-500"
-							on:click={() => (modal = false)}
-						>
-							NO
-						</div>
-						<div
-							class="flex-grow cursor-pointer rounded border p-3 px-5 text-center text-gray-400 transition hover:text-red-500"
-							on:click={del}
-						>
-							SI
-						</div>
-					</div>
-				</div>
-			</Modal>
-		</div>
+	<div slot="actions" class="flex">
+		<Check on:click={submit} />
+		<X on:click={() => goto('/admin/dashboard/events')} />
+		<Trash on:click={() => (modal = true)} />
+		<Modal bind:show={modal}>
+			<Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} />
+		</Modal>
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
-			<div>
-				<span class={error && !event.title ? 'text-red-500' : 'text-gray-700'}>Titolo *</span>
-				<input
-					type="text"
-					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					class:border-red-500={error && !event.title}
-					placeholder=""
-					bind:value={event.title}
+			<Text name="Titolo" required error={error && !event.title} bind:value={event.title} />
+			<Textarea name="Descrizione" bind:value={event.description} />
+
+			<div class="flex space-x-3">
+				<DatePicker
+					className="w-1/2"
+					name="Inizio"
+					required
+					error={error && !event.start}
+					bind:value={event.start}
 				/>
+				<DatePicker className="w-1/2" name="Fine" bind:value={event.end} />
 			</div>
-			<div>
-				<span class="text-gray-700">Descrizione</span>
-				<textarea
-					class=" mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					placeholder=""
-					bind:value={event.description}
-				/>
-			</div>
-			<div class="flex">
-				<div class="w-1/2 pr-3">
-					<span class={error && !event.start ? 'text-red-500' : 'text-gray-700'}>Inizio *</span>
-					<input
-						type="date"
-						class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-						class:border-red-500={error && !event.start}
-						placeholder=""
-						bind:value={event.start}
-					/>
-				</div>
-				<div class="w-1/2 pl-3">
-					<span class="text-gray-700">Fine</span>
-					<input
-						type="date"
-						class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-						placeholder=""
-						bind:value={event.end}
-					/>
-				</div>
-			</div>
-			<div>
-				<span class="text-gray-700">Link</span>
-				<input
-					type="text"
-					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					placeholder=""
-					bind:value={event.link}
-				/>
-			</div>
+			<Text name="Link" bind:value={event.link} />
 		</div>
 	</div>
 </Card>
