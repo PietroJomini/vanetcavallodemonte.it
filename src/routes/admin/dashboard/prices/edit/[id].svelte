@@ -39,7 +39,7 @@
 </script>
 
 <Card>
-	<div slot="title">Crea un nuovo prezzo</div>
+	<div slot="title">Modifica prezzo</div>
 	<div slot="actions" class="flex">
 		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/prices')} />

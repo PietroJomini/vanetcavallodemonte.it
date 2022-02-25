@@ -1,6 +1,7 @@
 <script>
 	import Card from '$lib/components/Card.svelte';
 	import Hero from '$lib/components/Hero.svelte';
+	import Price from '$lib/components/Price.svelte';
 	import Separator from '$lib/components/Separator.svelte';
 	import { t } from '$lib/translations';
 </script>
@@ -12,7 +13,8 @@
 		<div
 			class="mt-8 flex items-baseline justify-center whitespace-nowrap rounded-lg border-2 border-green-400 p-4 pt-4 text-4xl text-gray-600 lg:w-min"
 		>
-			30 <div class="text-3xl text-gray-300">€ /{$t('childs.person')}</div>
+			<Price name="Avvicinamenti" />
+			<div class="text-3xl text-gray-300">€ /{$t('childs.person')}</div>
 		</div>
 	</svelte:fragment>
 	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>

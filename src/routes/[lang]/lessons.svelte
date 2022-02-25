@@ -4,6 +4,7 @@
 	import Separator from '$lib/components/Separator.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/translations';
+	import Price from '$lib/components/Price.svelte';
 </script>
 
 <Hero>
@@ -27,7 +28,8 @@
 				1 <div class="text-3xl text-gray-300">h</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				20 <div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
+				<Price name="1 lezione" />
+				<div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
 
@@ -39,7 +41,8 @@
 				5 x 1 <div class="text-3xl text-gray-300">h</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				90 <div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
+				<Price name="5 lezioni" />
+				<div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
 
@@ -51,7 +54,8 @@
 				10 x 1 <div class="text-3xl text-gray-300">h</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				180 <div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
+				<Price name="10 lezioni" />
+				<div class="text-3xl text-gray-300">€ /{$t('lessons.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
 	</div>

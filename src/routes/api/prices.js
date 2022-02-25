@@ -12,8 +12,8 @@ const handler = partial({ db: 'prices' });
 
 export const get = handler({
 	guard: false,
-	action: async ({ db, params: { id } }) => ({
-		prices: await (await db.find(id ? { _id: ObjectId(id) } : {})).toArray()
+	action: async ({ db, params: { id, name } }) => ({
+		prices: await (await db.find(id ? { _id: ObjectId(id) } : name ? { name } : {})).toArray()
 	})
 });
 

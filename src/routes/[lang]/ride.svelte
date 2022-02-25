@@ -4,6 +4,7 @@
 	import Separator from '$lib/components/Separator.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/translations';
+	import Price from '$lib/components/Price.svelte';
 </script>
 
 <Hero>
@@ -39,7 +40,7 @@
 				<div>{$t('ride.perfect')} <b class="text-yellow-400">{$t('ride.beginners')}</b></div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				30
+				<Price name="Passeggiate 2 ore" />
 				<div class="text-3xl text-gray-300">€ /{$t('ride.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
@@ -55,7 +56,7 @@
 				<div>{$t('ride.from')} <b class="text-gray-500">3 </b>{$t('ride.people')}</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				45
+				<Price name="Passeggiate 3 ore" />
 				<div class="text-3xl text-gray-300">€ /{$t('ride.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
@@ -71,7 +72,7 @@
 				<div>{$t('ride.from')} <b class="text-gray-500">3 </b>{$t('ride.people')}</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				55
+				<Price name="Passeggiate 4 ore" />
 				<div class="text-3xl text-gray-300">€ /{$t('ride.person')}</div>
 			</svelte:fragment>
 		</PriceCard>
@@ -87,7 +88,7 @@
 				<div>{$t('ride.from')} <b class="text-gray-500">3 </b>{$t('ride.people')}</div>
 			</svelte:fragment>
 			<svelte:fragment slot="price">
-				65
+				<Price name="Passeggiate 5 ore" />
 				<div class="text-3xl text-gray-300">€ /{$t('ride.person')}</div>
 			</svelte:fragment>
 		</PriceCard>

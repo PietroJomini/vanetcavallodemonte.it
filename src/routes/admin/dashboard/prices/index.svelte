@@ -25,9 +25,9 @@
 	<div slot="content">
 		{#if prices.length > 0}
 			<Table
-				head={['Nome', 'Prezzo', 'Id']}
+				head={['Nome', 'Prezzo']}
 				rows={prices.map(({ _id, name, price }) => ({
-					items: [name, price, _id],
+					items: [name, price],
 					to: `/admin/dashboard/prices/edit/${_id}`
 				}))}
 			/>
