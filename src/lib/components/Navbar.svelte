@@ -56,7 +56,9 @@
 					{/each}
 				</div>
 				<Separator horizontal />
-				<div class="flex w-full items-center justify-center space-x-2">
+				<div
+					class="relative flex w-full items-center justify-center space-x-2 text-center lg:text-left"
+				>
 					<Link to="events"><div class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></div></Link>
 					<LangSwitch />
 				</div>

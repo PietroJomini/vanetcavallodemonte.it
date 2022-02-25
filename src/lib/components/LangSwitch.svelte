@@ -15,13 +15,13 @@
 	let open = false;
 </script>
 
-<div class="static" on:click={(_) => (open = !open)}>
+<div class="" on:click={(_) => (open = !open)}>
 	<OutClick on:outclick={(_) => (open = false)}>
 		<div class="h-6 w-6 cursor-pointer"><Icon src={GlobeAlt} /></div>
 
 		{#if open}
-			<div class="absolute right-0 top-full w-full px-5 lg:w-48">
-				<div class="-mt-4 flex w-full flex-col rounded bg-white p-2 shadow-lg lg:-mt-4">
+			<div class="absolute right-0 top-14 w-full px-5 lg:-right-10 lg:w-48">
+				<div class="flex w-full flex-col rounded bg-white p-2 shadow-lg">
 					{#each langs as lang}
 						<Link locale={lang.locale} to={stuff.route}>
 							<span class="cursor-pointer p-2 text-xs font-semibold uppercase text-gray-700">
