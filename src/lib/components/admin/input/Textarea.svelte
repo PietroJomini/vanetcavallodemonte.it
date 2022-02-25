@@ -4,6 +4,7 @@
 	export let required;
 	export let error;
 	export let className;
+	export let disabled;
 </script>
 
 <div class={className}>
@@ -18,5 +19,6 @@
 		}`}
 		placeholder=""
 		bind:value
+		{disabled}
 	/>
 </div>

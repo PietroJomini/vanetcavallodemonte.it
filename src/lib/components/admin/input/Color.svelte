@@ -7,6 +7,7 @@
 	export let error;
 	export let className;
 	export let colors;
+	export let disabled;
 
 	let open = false;
 </script>
@@ -24,7 +25,7 @@
 			class:border-gray-500={open}
 			on:click={() => (open = !open)}
 		>
-			{#if open}
+			{#if open && !disabled}
 				{#each colors as color}
 					<div
 						class="mr-3 h-8 w-8 rounded"

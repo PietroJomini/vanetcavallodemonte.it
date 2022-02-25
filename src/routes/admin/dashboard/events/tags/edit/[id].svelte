@@ -40,7 +40,6 @@
 
 	let error = false;
 	let modal = false;
-	let open = false;
 
 	const submit = async () => {
 		if (tag.name) {
@@ -65,14 +64,20 @@
 	<div slot="actions" class="flex">
 		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/events')} />
-		<Trash on:click={() => (modal = true)} />
+		<Trash on:click={() => (modal = true)} disabled={tag.protected} />
 		<Modal bind:show={modal}>
 			<Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} />
 		</Modal>
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
-			<Text name="Nome" required error={error && !tag.name} bind:value={tag.name} />
+			<Text
+				name="Nome"
+				required
+				error={error && !tag.name}
+				bind:value={tag.name}
+				disabled={tag.protected}
+			/>
 			<Color
 				colors={accents.map(({ value }) => value)}
 				bind:value={tag.accent}

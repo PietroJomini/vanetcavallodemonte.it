@@ -26,10 +26,9 @@ export const post = handler({
 
 export const patch = handler({
 	action: async ({ db, body: { id, name, accent } }) =>
-		await db.updateOne({ _id: ObjectId(id), protected: false }, { $set: { name, accent } })
+		await db.updateOne({ _id: ObjectId(id) }, { $set: { name, accent } })
 });
 
 export const del = handler({
-	action: async ({ db, body: { id } }) =>
-		await db.deleteOne({ _id: ObjectId(id), protected: false })
+	action: async ({ db, body: { id } }) => await db.deleteOne({ _id: ObjectId(id) })
 });

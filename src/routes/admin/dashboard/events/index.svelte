@@ -14,10 +14,10 @@
 </script>
 
 <script>
-	import { Plus } from '@steeze-ui/heroicons';
+	import { goto } from '$app/navigation';
 
-	import { Icon } from '@steeze-ui/svelte-icon';
 	import Card from '$lib/components/admin/Card.svelte';
+	import Plus from '$lib/components/admin/icons/Plus.svelte';
 	import Table from '$lib/components/admin/Table.svelte';
 
 	export let events;
@@ -26,11 +26,8 @@
 
 <Card>
 	<div slot="title">Eventi</div>
-	<div
-		slot="actions"
-		class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-emerald-500"
-	>
-		<a href="/admin/dashboard/events/new"><Icon src={Plus} /></a>
+	<div slot="actions" class="flex">
+		<Plus on:click={() => goto('/admin/dashboard/events/new')} />
 	</div>
 	<div slot="content">
 		{#if events.length > 0}
@@ -55,11 +52,8 @@
 
 <Card>
 	<div slot="title">Tags</div>
-	<div
-		slot="actions"
-		class="m-1 h-8 w-8 cursor-pointer rounded border p-1 text-gray-400 transition hover:text-emerald-500"
-	>
-		<a href="/admin/dashboard/events/tags/new"><Icon src={Plus} /></a>
+	<div slot="actions" class="flex">
+		<Plus on:click={() => goto('/admin/dashboard/events/tags/new')} />
 	</div>
 	<div slot="content">
 		{#if tags.length > 0}
