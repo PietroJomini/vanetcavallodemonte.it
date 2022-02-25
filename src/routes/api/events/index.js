@@ -9,7 +9,8 @@ const handler = partial({ db: 'event' });
 	descriprion: String,
 	start: Date,
 	end: Date,
-	link: String
+	link: String,
+	tags: Array[ObjectId]
 }
 */
 
@@ -21,13 +22,14 @@ export const get = handler({
 });
 
 export const post = handler({
-	action: async ({ db, body: { title, description, start, end, link } }) => ({
+	action: async ({ db, body: { title, description, start, end, link, tags } }) => ({
 		event: await db.insertOne({
 			title,
 			description,
 			start: new Date(start),
 			end: end && new Date(end),
-			link
+			link,
+			tags: tags.map((tag) => ObjectId(tag))
 		})
 	})
 });

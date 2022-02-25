@@ -6,7 +6,9 @@
 		const response = await fetch(`/api/events?id=${id}`);
 		const { events } = await response.json();
 
-		return { props: { id, events } };
+		const tags = await fetch('/api/events/tags');
+
+		return { props: { id, events, tags: (await tags.json()).tags } };
 	}
 </script>
 
@@ -17,6 +19,7 @@
 	import Trash from '$lib/components/admin/icons/Trash.svelte';
 	import Check from '$lib/components/admin/icons/Check.svelte';
 	import Text from '$lib/components/admin/input/Text.svelte';
+	import Tags from '$lib/components/admin/input/Tags.svelte';
 	import Textarea from '$lib/components/admin/input/Textarea.svelte';
 	import DatePicker from '$lib/components/admin/input/DatePicker.svelte';
 	import Modal from '$lib/components/admin/Modal.svelte';
@@ -24,6 +27,7 @@
 
 	export let id;
 	export let events;
+	export let tags;
 
 	const event = {
 		...events[0],
@@ -76,6 +80,7 @@
 				<DatePicker className="w-1/2" name="Fine" bind:value={event.end} />
 			</div>
 			<Text name="Link" bind:value={event.link} />
+			<Tags name="Tags" options={tags} bind:value={event.tags} selected={event.tags} />
 		</div>
 	</div>
 </Card>

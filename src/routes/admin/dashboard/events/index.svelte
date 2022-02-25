@@ -19,6 +19,7 @@
 	import Card from '$lib/components/admin/Card.svelte';
 	import Plus from '$lib/components/admin/icons/Plus.svelte';
 	import Table from '$lib/components/admin/Table.svelte';
+	import TagList from '$lib/components/admin/TagList.svelte';
 
 	export let events;
 	export let tags;
@@ -32,14 +33,15 @@
 	<div slot="content">
 		{#if events.length > 0}
 			<Table
-				head={['Titolo', 'Descrizione', 'Link', 'Inizio', 'Fine']}
+				head={['Titolo', 'Descrizione', 'Link', 'Inizio', 'Fine', 'Tags']}
 				rows={events.map((event) => ({
 					items: [
 						event.title,
 						event.description,
 						event.link,
 						event.start && new Date(event.start).toLocaleDateString('it-IT'),
-						event.end && new Date(event.end).toLocaleDateString('it-IT')
+						event.end && new Date(event.end).toLocaleDateString('it-IT'),
+						{ type: 'component', component: event.tags && TagList, props: { tags: event.tags } }
 					],
 					to: `/admin/dashboard/events/edit/${event._id}`
 				}))}

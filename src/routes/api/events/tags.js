@@ -1,5 +1,6 @@
 import { partial } from '$lib/api/method.js';
 import { ObjectId } from 'mongodb';
+import dbPremise from '$lib/api/mongo.js';
 
 const handler = partial({ db: 'tags' });
 
@@ -30,5 +31,11 @@ export const patch = handler({
 });
 
 export const del = handler({
-	action: async ({ db, body: { id } }) => await db.deleteOne({ _id: ObjectId(id) })
+	action: async ({ db, body: { id } }) => {
+		await db.deleteOne({ _id: ObjectId(id) });
+
+		const connection = await dbPremise;
+		const collection = connection.db().collection('event');
+		await collection.updateMany({ tags: id }, { $pull: { tags: id } });
+	}
 });
