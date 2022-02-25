@@ -3,10 +3,10 @@
 	export async function load({ fetch, params }) {
 		const { id } = params;
 
-		const response = await fetch(`/api/events?id=${id}`);
-		const { events } = await response.json();
+		const response = await fetch(`/api/events/tags?id=${id}`);
+		const { tags } = await response.json();
 
-		return { props: { id, events } };
+		return { props: { id, tag: tags[0] } };
 	}
 </script>
 
@@ -17,22 +17,33 @@
 	import { goto } from '$app/navigation';
 	import Modal from '$lib/components/admin/Modal.svelte';
 
-	export let id;
-	export let events;
+	const accents = [
+		{ name: 'slate', value: '#64748B' },
+		{ name: 'red', value: '#EF4444' },
+		{ name: 'amber', value: '#F59E0B' },
+		{ name: 'lime', value: '#84CC16' },
+		{ name: 'emerald', value: '#10B981' },
+		{ name: 'teal', value: '#14B8A6' },
+		{ name: 'cyan', value: '#06B6D4' },
+		{ name: 'sky', value: '#0EA5E9' },
+		{ name: 'indigo', value: '#6366F1' },
+		{ name: 'pink', value: '#EC4899' },
+		{ name: 'rose', value: '#F43F5E' }
+	];
 
-	const event = {
-		...events[0],
-		start: events[0].start && new Date(events[0].start).toISOString().substring(0, 10),
-		end: events[0].end && new Date(events[0].end).toISOString().substring(0, 10)
-	};
+	export let id;
+	export let tag;
 
 	let error = false;
 	let modal = false;
+	let open = false;
 
 	const submit = async () => {
-		if (event.title && event.start) {
-			event._id = undefined;
-			await fetch('/api/events', { method: 'PATCH', body: JSON.stringify({ id, event }) });
+		if (tag.name) {
+			await fetch('/api/events/tags', {
+				method: 'PATCH',
+				body: JSON.stringify({ id, name: tag.name, accent: tag.accent })
+			});
 			goto('/admin/dashboard/events');
 		} else {
 			error = true;
@@ -40,13 +51,13 @@
 	};
 
 	const del = async () => {
-		await fetch('/api/events', { method: 'DELETE', body: JSON.stringify({ id }) });
+		await fetch('/api/events/tags', { method: 'DELETE', body: JSON.stringify({ id }) });
 		goto('/admin/dashboard/events');
 	};
 </script>
 
 <Card>
-	<div slot="title">Modifica evento</div>
+	<div slot="title">Modifica tag</div>
 	<div slot="actions">
 		<div class="flex">
 			<div
@@ -69,7 +80,7 @@
 			</div>
 			<Modal bind:show={modal}>
 				<div class="flex w-80 flex-col rounded bg-white p-3">
-					<div class="border-b py-2 text-xl">Eliminare l'evento?</div>
+					<div class="border-b py-2 text-xl">Eliminare il tag?</div>
 					<div class="mt-1 text-sm text-red-500">Attenzione: azione irreversibile</div>
 					<div class="mt-4 flex space-x-2">
 						<div
@@ -92,52 +103,37 @@
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
 			<div>
-				<span class={error && !event.title ? 'text-red-500' : 'text-gray-700'}>Titolo *</span>
+				<span class={error && !tag.name ? 'text-red-500' : 'text-gray-700'}>Nome *</span>
 				<input
 					type="text"
 					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					class:border-red-500={error && !event.title}
+					class:border-red-500={error && !tag.name}
 					placeholder=""
-					bind:value={event.title}
+					bind:value={tag.name}
 				/>
 			</div>
 			<div>
-				<span class="text-gray-700">Descrizione</span>
-				<textarea
-					class=" mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					placeholder=""
-					bind:value={event.description}
-				/>
-			</div>
-			<div class="flex">
-				<div class="w-1/2 pr-3">
-					<span class={error && !event.start ? 'text-red-500' : 'text-gray-700'}>Inizio *</span>
-					<input
-						type="date"
-						class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-						class:border-red-500={error && !event.start}
-						placeholder=""
-						bind:value={event.start}
-					/>
+				<span class={error && !tag.accent ? 'text-red-500' : 'text-gray-700'}>Colore *</span>
+				<div
+					class="bored-transparent mt-1 flex cursor-pointer rounded-md border bg-gray-100 p-3"
+					class:border-red-500={error && !tag.accent}
+					class:border-gray-500={open}
+					on:click={() => (open = !open)}
+				>
+					{#if open}
+						{#each accents as accent}
+							<div
+								class="mr-3 h-8 w-8 rounded"
+								style={`background-color: ${accent.value}`}
+								on:click={() => (tag.accent = accent.value)}
+							/>
+						{/each}
+					{:else if tag.accent}
+						<div class="mr-3 h-8 w-8 rounded" style={`background-color: ${tag.accent}`} />
+					{:else}
+						<div class=" text-gray-400">Seleziona un colore</div>
+					{/if}
 				</div>
-				<div class="w-1/2 pl-3">
-					<span class="text-gray-700">Fine</span>
-					<input
-						type="date"
-						class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-						placeholder=""
-						bind:value={event.end}
-					/>
-				</div>
-			</div>
-			<div>
-				<span class="text-gray-700">Link</span>
-				<input
-					type="text"
-					class="mt-1 w-full rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0"
-					placeholder=""
-					bind:value={event.link}
-				/>
 			</div>
 		</div>
 	</div>

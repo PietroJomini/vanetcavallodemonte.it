@@ -1,15 +1,24 @@
 <script context="module">
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ fetch }) {
-		const response = await fetch('/api/events');
-		const { events } = await response.json();
-		return { props: { events } };
+		const events = await fetch('/api/events');
+		const tags = await fetch('/api/events/tags');
+
+		return {
+			props: {
+				events: (await events.json()).events,
+				tags: (await tags.json()).tags
+			}
+		};
 	}
 </script>
 
 <script>
 	import { slide, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
+
+	export let tags;
+	$: tags = tags.map((tag) => ({ ...tag, selected: false }));
 
 	let types = [
 		{ key: 'bear', selected: false, accent: 'text-teal-500' },
@@ -36,7 +45,7 @@
 	};
 
 	export let events;
-	$: eventsp = events.map((e) => ({
+	$: events = events.map((e) => ({
 		...e,
 		start: new Date(e.start),
 		end: e.end && new Date(e.end),
@@ -107,7 +116,7 @@
 		{/if}
 	</div>
 
-	{#each selected.length === 0 ? eventsp : eventsp.filter( (event) => event.types.some((type) => types.filter(({ key }) => key === type.key)[0].selected) ) as event (event.title)}
+	{#each selected.length === 0 ? events : events.filter( (event) => event.types.some((type) => types.filter(({ key }) => key === type.key)[0].selected) ) as event (event.title)}
 		<div
 			class="m-2 flex h-96 items-end rounded-xl bg-emerald-200  p-2 shadow-md"
 			transition:fade={{ duration: 100 }}

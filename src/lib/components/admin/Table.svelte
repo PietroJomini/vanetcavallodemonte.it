@@ -20,7 +20,7 @@
 			<tr class="group cursor-pointer" on:click={() => goto(row.to)}>
 				{#each row.items as item}
 					<td class="border-t border-gray-200 p-1 py-2 text-gray-500 group-hover:text-gray-700">
-						{#if item}{item}{/if}
+						{#if item}{@html item}{/if}
 					</td>
 				{/each}
 			</tr>

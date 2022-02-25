@@ -1,8 +1,19 @@
-import { handler } from '$lib/api/method.js';
+import { partial } from '$lib/api/method.js';
 import { ObjectId } from 'mongodb';
 
+const handler = partial({ db: 'event' });
+
+/*
+{
+    title: String,
+	descriprion: String,
+	start: Date,
+	end: Date,
+	link: String
+}
+*/
+
 export const get = handler({
-	schema: 'event',
 	guard: false,
 	action: async ({ db, params: { id } }) => ({
 		events: await (await db.find(id ? { _id: ObjectId(id) } : {})).toArray()
@@ -10,7 +21,6 @@ export const get = handler({
 });
 
 export const post = handler({
-	schema: 'event',
 	action: async ({ db, body: { title, description, start, end, link } }) => ({
 		event: await db.insertOne({
 			title,
@@ -23,21 +33,13 @@ export const post = handler({
 });
 
 export const patch = handler({
-	schema: 'event',
-	action: async ({
-		db,
-		body: {
-			id,
-			event: { title, description, start, end, link }
-		}
-	}) =>
+	action: async ({ db, body: { id, event } }) =>
 		await db.updateOne(
 			{ _id: ObjectId(id) },
-			{ $set: { title, description, start: new Date(start), end: end && new Date(end), link } }
+			{ $set: { ...event, start: new Date(event.start), end: event.end && new Date(event.end) } }
 		)
 });
 
 export const del = handler({
-	schema: 'event',
 	action: async ({ db, body: { id } }) => await db.deleteOne({ _id: ObjectId(id) })
 });

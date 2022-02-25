@@ -20,7 +20,7 @@
 <div class="flex h-screen w-screen">
 	<Navbar {tabs} />
 	<div class="h-full flex-grow p-3">
-		<div class="relative h-full w-full overflow-auto rounded bg-gray-200 p-3">
+		<div class="relative h-full w-full space-y-3 overflow-auto rounded bg-gray-200 p-3">
 			<slot />
 		</div>
 	</div>
