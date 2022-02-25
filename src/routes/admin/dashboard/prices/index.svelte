@@ -20,7 +20,7 @@
 <Card>
 	<div slot="title">Prezzi</div>
 	<div slot="actions" class="flex">
-		<Plus on:click={() => goto('/admin/dashboard/prices/new')} />
+		<Plus on:click={() => goto('/admin/dashboard/prices/new')} disabled />
 	</div>
 	<div slot="content">
 		{#if prices.length > 0}

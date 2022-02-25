@@ -35,7 +35,7 @@ export const del = handler({
 		await db.deleteOne({ _id: ObjectId(id) });
 
 		const connection = await dbPremise;
-		const collection = connection.db().collection('event');
+		const collection = connection.db().collection('events');
 		await collection.updateMany({ tags: id }, { $pull: { tags: id } });
 	}
 });

@@ -1,7 +1,7 @@
 import { partial } from '$lib/api/method.js';
 import { ObjectId } from 'mongodb';
 
-const handler = partial({ db: 'event' });
+const handler = partial({ db: 'events' });
 
 /*
 {
