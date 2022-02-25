@@ -7,7 +7,7 @@
 		return {
 			props: {
 				events: (await events.json()).events,
-				tags: (await tags.json()).tags
+				tags: (await tags.json()).tags.map((tag) => ({ ...tag, selected: false }))
 			}
 		};
 	}
@@ -18,29 +18,12 @@
 	import { flip } from 'svelte/animate';
 
 	export let tags;
-	$: tags = tags.map((tag) => ({ ...tag, selected: false }));
-
-	let types = [
-		{ key: 'bear', selected: false, accent: 'text-teal-500' },
-		{ key: 'lacking', selected: false, accent: 'text-slate-500' },
-		{ key: 'secretary', selected: false, accent: 'text-amber-500' },
-		{ key: 'medical', selected: false, accent: 'text-lime-500' },
-		{ key: 'language', selected: false, accent: 'text-emerald-500' },
-		{ key: 'haunt', selected: false, accent: 'text-cyan-500' },
-		{ key: 'feeling', selected: false, accent: 'text-indigo-500' },
-		{ key: 'red', selected: false, accent: 'text-pink-500' },
-		{ key: 'greasy', selected: false, accent: 'text-rose-500' },
-		{ key: 'jaded', selected: false, accent: 'text-sky-500' },
-		{ key: 'berry', selected: false, accent: 'text-cyan-400' },
-		{ key: 'mist', selected: false, accent: 'text-red-500' }
-	];
-
-	$: selected = types.filter((type) => type.selected);
+	$: selected = tags.filter((tag) => tag.selected);
 
 	const getRandomTypes = () => {
 		let n = Math.floor(Math.random() * 4);
 		let t = [];
-		while (t.length < n) t.push(types[Math.floor(Math.random() * types.length)]);
+		while (t.length < n) t.push(tags[Math.floor(Math.random() * tags.length)]);
 		return t;
 	};
 
@@ -49,7 +32,7 @@
 		...e,
 		start: new Date(e.start),
 		end: e.end && new Date(e.end),
-		types: getRandomTypes()
+		tags: getRandomTypes()
 	}));
 
 	const months = [
@@ -84,7 +67,7 @@
 				<span
 					transition:slide
 					class="mt-2 cursor-pointer text-sm text-gray-400 lg:mt-0"
-					on:click={() => (types = types.map((type) => ({ ...type, selected: false })))}
+					on:click={() => (tags = tags.map((tag) => ({ ...tag, selected: false })))}
 				>
 					Resetta il filtro
 				</span>
@@ -93,14 +76,14 @@
 		<div
 			class="mt-12 flex w-full flex-row flex-wrap justify-center lg:mt-0 lg:w-1/3 lg:justify-end"
 		>
-			{#each types as type}
+			{#each tags as tag}
 				<div
-					class={`mx-2 cursor-pointer rounded px-2 ${
-						type.selected ? type.accent : 'text-gray-400'
-					}`}
-					on:click={() => (type.selected = !type.selected)}
+					class="mx-2 cursor-pointer rounded px-2"
+					class:text-gray-400={!tag.selected}
+					style={tag.selected && `color: ${tag.accent};`}
+					on:click={() => (tag.selected = !tag.selected)}
 				>
-					#{type.key}
+					#{tag.name}
 				</div>
 			{/each}
 		</div>
@@ -111,12 +94,12 @@
 			Mostra tutti gli eventi
 		{:else}
 			Mostra gli eventi di tipo {@html selected
-				.map((type) => `<span class="text-gray-800">${type.key}</span>`)
+				.map((tag) => `<span class="text-gray-800">${tag.name}</span>`)
 				.join(' o ')}
 		{/if}
 	</div>
 
-	{#each selected.length === 0 ? events : events.filter( (event) => event.types.some((type) => types.filter(({ key }) => key === type.key)[0].selected) ) as event (event.title)}
+	{#each selected.length === 0 ? events : events.filter( (event) => event.tags.some((tag) => tags.filter(({ name }) => name === tag.name)[0].selected) ) as event (event.title)}
 		<div
 			class="m-2 flex h-96 items-end rounded-xl bg-emerald-200  p-2 shadow-md"
 			transition:fade={{ duration: 100 }}
@@ -131,15 +114,15 @@
 				</div>
 				<div
 					class={`flex flex-grow items-end overflow-hidden p-2 text-gray-700 text-center ${
-						event.types.length === 0 ? 'line-clamp-6' : 'line-clamp-5'
+						event.tags.length === 0 ? 'line-clamp-6' : 'line-clamp-5'
 					} `}
 				>
 					{event.description || ''}
 				</div>
 				<div class="flex flex-wrap items-center p-2">
-					{#each event.types as type}
+					{#each event.tags as tag}
 						<div class={`mx-1 rounded text-gray-400`}>
-							#{type.key}
+							#{tag.name}
 						</div>
 					{/each}
 				</div>
