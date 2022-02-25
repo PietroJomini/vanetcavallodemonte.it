@@ -59,6 +59,12 @@ const config = {
 			loader: async () => await import(`./it/prices.json`)
 		},
 		{
+			locale: 'it',
+			key: 'events',
+			routes: ['/events'],
+			loader: async () => await import(`./it/events.json`)
+		},
+		{
 			locale: 'en',
 			key: 'home',
 			routes: ['/', ''],

@@ -1,0 +1,11 @@
+{
+	"months": ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+	"title": "Gli eventi di",
+	"select": "Seleziona il tipo di evento",
+	"reset": "Resetta il filtro",
+	"show": {
+		"all": "Mostra tutti gli eventi",
+		"some": "Mostra gli eventi di tipo",
+		"separator": " o "
+	}
+}

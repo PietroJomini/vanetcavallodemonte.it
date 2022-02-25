@@ -17,6 +17,7 @@
 	import { slide, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { page } from '$app/stores';
+	import { t } from '$lib/translations';
 
 	export let tags;
 	$: selected = tags.filter((tag) => tag.selected);
@@ -36,26 +37,13 @@
 		tags: applyTags(e.tags)
 	}));
 
-	const months = [
-		'Gen',
-		'Feb',
-		'Mar',
-		'Apr',
-		'Mag',
-		'Giu',
-		'Lug',
-		'Ago',
-		'Set',
-		'Ott',
-		'Nov',
-		'Dic'
-	];
-
-	const formatDate = (date) => `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+	const formatDate = (date) =>
+		`${date.getDate()} ${$t(`events.months.${date.getMonth()}`)} ${date.getFullYear()}`;
 </script>
 
 <div class="text-cabin mt-40 mb-10 w-full px-10 text-center text-4xl lg:text-left">
-	Gli eventi di <div class="text-cabin text-6xl">Vanet Cavallo</div>
+	{$t('events.title')}
+	<div class="text-cabin text-6xl">Vanet Cavallo</div>
 </div>
 
 <div class="flex flex-wrap justify-center p-10 pt-0">
@@ -63,14 +51,14 @@
 		class="flex w-full select-none flex-col items-center justify-between rounded bg-white p-10 shadow lg:flex-row"
 	>
 		<div class="flex flex-col justify-start text-center lg:text-left">
-			<div class="font-cabin text-3xl text-gray-700">Seleziona il tipo di evento</div>
+			<div class="font-cabin text-3xl text-gray-700">{$t('events.select')}</div>
 			{#if selected.length > 0}
 				<span
 					transition:slide
 					class="mt-2 cursor-pointer text-sm text-gray-400 lg:mt-0"
 					on:click={() => (tags = tags.map((tag) => ({ ...tag, selected: false })))}
 				>
-					Resetta il filtro
+					{$t('events.reset')}
 				</span>
 			{/if}
 		</div>
@@ -92,11 +80,12 @@
 
 	<div class="mb-10 w-full select-none p-5 text-center text-sm text-gray-400">
 		{#if selected.length === 0}
-			Mostra tutti gli eventi
+			{$t('events.show.all')}
 		{:else}
-			Mostra gli eventi di tipo {@html selected
+			{$t('events.show.some')}
+			{@html selected
 				.map((tag) => `<span class="text-gray-800">${tag.name}</span>`)
-				.join(' o ')}
+				.join($t('events.show.separator'))}
 		{/if}
 	</div>
 
