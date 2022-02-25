@@ -16,23 +16,24 @@
 <script>
 	import { slide, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
+	import { page } from '$app/stores';
 
 	export let tags;
 	$: selected = tags.filter((tag) => tag.selected);
 
-	const getRandomTypes = () => {
-		let n = Math.floor(Math.random() * 4);
-		let t = [];
-		while (t.length < n) t.push(tags[Math.floor(Math.random() * tags.length)]);
-		return t;
-	};
+	try {
+		const s = $page.url.searchParams.get('s');
+		JSON.parse(s).forEach((name) => (tags.find((tag) => tag.name === name).selected = true));
+	} catch {}
+
+	const applyTags = (original) => original.map((id) => tags.find(({ _id }) => id === _id));
 
 	export let events;
 	$: events = events.map((e) => ({
 		...e,
 		start: new Date(e.start),
 		end: e.end && new Date(e.end),
-		tags: getRandomTypes()
+		tags: applyTags(e.tags)
 	}));
 
 	const months = [

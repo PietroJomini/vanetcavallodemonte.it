@@ -4,6 +4,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/translations';
 	import Price from '$lib/components/Price.svelte';
+	import Link from '$lib/components/Link.svelte';
 </script>
 
 <Hero>
@@ -17,9 +18,9 @@
 				<Price name="Campi 12-17" />
 				<div class="text-3xl text-gray-300">€ /{$t('camps.persons')}</div>
 			</div>
-			<a class="mt-2 font-bold italic underline" href="?">
-				{$t('camps.a12_17.dates')}
-			</a>
+			<Link to={`/events?s=["Campi 12-17"]`}>
+				<div class="mt-2 font-bold italic underline">{$t('camps.a12_17.dates')}</div>
+			</Link>
 		</div>
 	</svelte:fragment>
 	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
