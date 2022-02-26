@@ -2,7 +2,7 @@
 	import Card from '$lib/components/Card.svelte';
 	import Separator from '$lib/components/Separator.svelte';
 	import Hero from '$lib/components/Hero.svelte';
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n';
 	import Price from '$lib/components/Price.svelte';
 	import Link from '$lib/components/Link.svelte';
 </script>

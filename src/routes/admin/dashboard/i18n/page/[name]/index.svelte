@@ -1,7 +1,9 @@
 <script>
 	import { goto } from '$app/navigation';
+
+	import { page } from '$app/stores';
 	import Card from '$lib/components/admin/Card.svelte';
-	import Plus from '$lib/components/admin/icons/Plus.svelte';
+	import X from '$lib/components/admin/icons/X.svelte';
 	import Table from '$lib/components/admin/Table.svelte';
 	import { onMount } from 'svelte';
 
@@ -14,29 +16,16 @@
 </script>
 
 <Card>
-	<div slot="title">Lingue</div>
-	<div slot="actions" class="flex">
-		<Plus on:click={() => goto('/admin/dashboard/i18n/new')} />
+	<div slot="title">Pagine / {$page.params.name}</div>
+	<div class="flex" slot="actions">
+		<X on:click={() => goto('/admin/dashboard/i18n')} />
 	</div>
 	<div slot="content">
 		<Table
 			head={['Lingua', 'Locale', 'Attivo']}
 			rows={schema?.locales.map((locale) => ({
 				items: [locale.name, locale.locale, locale.enabled ? 'SI' : 'NO'],
-				to: `/admin/dashboard/i18n/${locale.locale}`
-			}))}
-		/>
-	</div>
-</Card>
-
-<Card>
-	<div slot="title">Pagine</div>
-	<div slot="content">
-		<Table
-			head={['Nome', 'ID']}
-			rows={schema?.pages.map((page) => ({
-				items: [page.name, page.key],
-				to: `/admin/dashboard/i18n/page/${page.key}/`
+				to: `/admin/dashboard/i18n/page/${$page.params.name}/${locale.locale}`
 			}))}
 		/>
 	</div>

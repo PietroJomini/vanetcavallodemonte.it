@@ -1,5 +1,5 @@
 <script>
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n';
 	import { onMount, onDestroy } from 'svelte';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 	import '@splidejs/splide/dist/css/splide.min.css';

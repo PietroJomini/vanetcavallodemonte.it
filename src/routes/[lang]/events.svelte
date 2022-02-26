@@ -17,7 +17,7 @@
 	import { slide, fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	import { page } from '$app/stores';
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n';
 
 	export let tags;
 	$: selected = tags.filter((tag) => tag.selected);

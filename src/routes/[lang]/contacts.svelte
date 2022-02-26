@@ -4,7 +4,7 @@
 	import Instagram from '$lib/icons/Instagram.svelte';
 	import Facebook from '$lib/icons/Facebook.svelte';
 	import Whatsapp from '$lib/icons/Whatsapp.svelte';
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n';
 </script>
 
 <div class="flex flex-col lg:h-screen">

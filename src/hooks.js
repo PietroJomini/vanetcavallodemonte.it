@@ -1,4 +1,4 @@
-import { hook as i18n } from '$lib/translations';
+import { hook as i18n } from '$lib/i18n';
 import { session } from '$lib/auth';
 import { parse } from 'cookie';
 

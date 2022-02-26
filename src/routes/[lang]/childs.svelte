@@ -3,7 +3,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Price from '$lib/components/Price.svelte';
 	import Separator from '$lib/components/Separator.svelte';
-	import { t } from '$lib/translations';
+	import { t } from '$lib/i18n';
 </script>
 
 <Hero>

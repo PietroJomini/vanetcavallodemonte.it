@@ -15,7 +15,7 @@
 <div class={className}>
 	{#if name}
 		<span class={error ? 'text-red-500' : 'text-gray-700'}>
-			{name}{#if required} *{/if}
+			{name}{#if required}{' *'}{/if}
 		</span>
 	{/if}
 	<OutClick on:outclick={() => (open = false)}>

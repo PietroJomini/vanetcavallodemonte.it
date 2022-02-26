@@ -1,6 +1,6 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
-	import { t, locale } from '$lib/translations';
+	import { t } from '$lib/i18n';
 	import Link from '$lib/components/Link.svelte';
 </script>
 
