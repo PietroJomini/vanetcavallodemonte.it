@@ -5,12 +5,9 @@
 	import Link from './Link.svelte';
 	import { page } from '$app/stores';
 
-	$: ({ stuff } = $page);
+	import { locales } from '/static/translations/schema.json';
 
-	let langs = [
-		{ name: 'Italiano', locale: 'it' },
-		{ name: 'English', locale: 'en' }
-	];
+	$: ({ stuff } = $page);
 
 	let open = false;
 </script>
@@ -22,7 +19,7 @@
 		{#if open}
 			<div class="absolute right-0 top-14 w-full px-5 lg:-right-10 lg:w-48">
 				<div class="flex w-full flex-col rounded bg-white p-2 shadow-lg">
-					{#each langs as lang}
+					{#each locales.filter(({ enabled }) => enabled) as lang}
 						<Link locale={lang.locale} to={stuff.route}>
 							<span class="cursor-pointer p-2 text-xs font-semibold uppercase text-gray-700">
 								{lang.name}

@@ -21,6 +21,10 @@
 	onMount(() => document.querySelector('body').classList.add('bg-gray-100'));
 </script>
 
+<svelte:head>
+	<title>Vanet Cavallo</title>
+</svelte:head>
+
 <Navbar />
 <slot />
 <Footer />
