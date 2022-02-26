@@ -15,7 +15,7 @@
 	{/if}
 	<input
 		type="date"
-		class={`mt-1 w-full rounded-md  bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0 ${
+		class={`mt-1 w-full rounded-md transition  bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0 ${
 			error ? 'border-red-500' : 'border-transparent'
 		}`}
 		placeholder=""

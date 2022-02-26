@@ -4,7 +4,7 @@
 
 <script>
 	import Navbar from '$lib/components/admin/Navbar.svelte';
-	import { Calendar, CurrencyEuro } from '@steeze-ui/heroicons';
+	import { Calendar, CurrencyEuro, GlobeAlt } from '@steeze-ui/heroicons';
 
 	const tabs = [
 		{
@@ -18,8 +18,15 @@
 			key: 'prices',
 			name: 'Prezzi',
 			to: '/admin/dashboard/prices',
-			color: 'text-emerald-500',
+			color: 'text-emerald-400',
 			icon: CurrencyEuro
+		},
+		{
+			key: 'i18n',
+			name: 'Traduzioni',
+			to: '/admin/dashboard/i18n',
+			color: 'text-amber-400',
+			icon: GlobeAlt
 		}
 	];
 </script>

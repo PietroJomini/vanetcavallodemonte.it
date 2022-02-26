@@ -43,7 +43,7 @@
 						event.end && new Date(event.end).toLocaleDateString('it-IT'),
 						{ type: 'component', component: event.tags && TagList, props: { tags: event.tags } }
 					],
-					to: `/admin/dashboard/events/edit/${event._id}`
+					to: `/admin/dashboard/events/${event._id}`
 				}))}
 			/>
 		{:else}
@@ -67,7 +67,7 @@
 						`<div class="h-6 w-6 rounded" style="background-color: ${tag.accent}" >`,
 						tag.protected ? 'SI' : 'NO'
 					],
-					to: `/admin/dashboard/events/tags/edit/${tag._id}`
+					to: `/admin/dashboard/events/tags/${tag._id}`
 				}))}
 			/>
 		{:else}

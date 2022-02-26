@@ -20,7 +20,7 @@
 	{/if}
 	<OutClick on:outclick={() => (open = false)}>
 		<div
-			class="bored-transparent mt-1 flex cursor-pointer rounded-md border bg-gray-100 p-3"
+			class="bored-transparent mt-1 flex cursor-pointer rounded-md border bg-gray-100 p-3 transition"
 			class:border-red-500={error}
 			class:border-gray-500={open}
 			on:click={() => (open = !open)}

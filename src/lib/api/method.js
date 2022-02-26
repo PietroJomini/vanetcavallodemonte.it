@@ -2,11 +2,11 @@ import dbPremise from './mongo.js';
 
 export const handler = ({ action, guard = true, db = false }) => {
 	/** @type {import('@sveltejs/kit').RequestHandler} */
-	async function endpoint({ request, url, locals }) {
+	async function endpoint({ request, url, locals, params }) {
 		if (guard && !locals.auth) return { status: 401 };
 
 		const body = await request.json().catch(() => ({}));
-		const params = Object.fromEntries(url.searchParams);
+		params = { ...params, ...Object.fromEntries(url.searchParams) };
 
 		const connection = db && (await dbPremise);
 		const collection = db && connection.db().collection(db);
