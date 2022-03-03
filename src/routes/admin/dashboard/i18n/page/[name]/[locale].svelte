@@ -30,7 +30,8 @@
 			...rows.filter(([_, value]) => value !== ''),
 			...schema.filter(([_, value]) => value !== '')
 		]);
-		await fetch(`/api/i18n/page?locale=${$page.params.locale}&page=${$page.params.name}`, {
+
+		fetch(`/api/i18n/page?locale=${$page.params.locale}&page=${$page.params.name}`, {
 			method: 'PATCH',
 			body: JSON.stringify(body)
 		});

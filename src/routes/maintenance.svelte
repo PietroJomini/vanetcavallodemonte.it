@@ -18,6 +18,10 @@
 	import Whatsapp from '$lib/icons/Whatsapp.svelte';
 </script>
 
+<svelte:head>
+	<title>Vanet Cavallo - Maintenance</title>
+</svelte:head>
+
 <div class="flex h-screen w-screen items-center justify-center bg-slate-50">
 	<div class="flex flex-col items-center space-y-10 rounded-xl bg-slate-50 md:bg-white md:p-20">
 		<div class="font-serif text-6xl">Vanet Cavallo</div>

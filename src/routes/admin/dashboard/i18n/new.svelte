@@ -14,7 +14,7 @@
 	import X from '$lib/components/admin/icons/X.svelte';
 	import Check from '$lib/components/admin/icons/Check.svelte';
 	import Text from '$lib/components/admin/input/Text.svelte';
-	import Checkbox from '$lib/components/admin/input/Checkbox.svelte';
+	import Switch from '$lib/components/admin/input/Switch.svelte';
 
 	let name;
 	let locale;
@@ -26,7 +26,7 @@
 
 	const submit = async () => {
 		if (name && checkLocale) {
-			await fetch('/api/i18n/schema', {
+			fetch('/api/i18n/schema', {
 				method: 'POST',
 				body: JSON.stringify({ name, locale, enabled })
 			});
@@ -48,7 +48,7 @@
 		<div class="flex flex-col space-y-3">
 			<Text name="Nome" required error={error && !name} bind:value={name} />
 			<Text name="Locale" required error={error && !checkLocale} bind:value={locale} />
-			<Checkbox name="Abilitato" bind:value={enabled} />
+			<Switch name="Abilitato" bind:value={enabled} />
 		</div>
 	</div>
 </Card>
