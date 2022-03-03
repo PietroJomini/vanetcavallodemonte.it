@@ -4,7 +4,7 @@
 
 <script>
 	import Navbar from '$lib/components/admin/Navbar.svelte';
-	import { Calendar, CurrencyEuro, GlobeAlt } from '@steeze-ui/heroicons';
+	import { Calendar, Cog, CurrencyEuro, GlobeAlt } from '@steeze-ui/heroicons';
 
 	const tabs = [
 		{
@@ -27,6 +27,13 @@
 			to: '/admin/dashboard/i18n',
 			color: 'text-amber-400',
 			icon: GlobeAlt
+		},
+		{
+			key: 'settings',
+			name: 'Impostazioni',
+			to: '/admin/dashboard/settings',
+			color: 'text-rose-400',
+			icon: Cog
 		}
 	];
 </script>

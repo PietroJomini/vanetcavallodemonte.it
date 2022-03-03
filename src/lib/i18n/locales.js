@@ -24,7 +24,7 @@ export const map = async (schema) => {
 		)
 		.flat();
 
-	const body = JSON.stringify({ loaders }, null, 4);
+	const body = JSON.stringify({ loaders });
 	await promises.writeFile(paths.map, body);
 };
 
@@ -35,7 +35,7 @@ export const schema = {
 		return json ? JSON.parse(body) : body;
 	},
 	write: async function (json) {
-		const body = JSON.stringify(json, null, 4);
+		const body = JSON.stringify(json);
 		await promises.writeFile(paths.schema, body);
 		await map(json);
 	},
@@ -61,6 +61,6 @@ export const pages = {
 		return stream.toString();
 	},
 	write: async function (locale, key, body) {
-		await promises.writeFile(paths.page(locale, key), JSON.stringify(body, null, 4));
+		await promises.writeFile(paths.page(locale, key), JSON.stringify(body));
 	}
 };

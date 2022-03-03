@@ -11,6 +11,6 @@ const config = {
 };
 
 export const defaultLocale = 'it';
-export const exceptions = ['api', 'admin'];
+export const exceptions = ['api', 'admin', 'maintenance'];
 export const { t, locale, locales, loading, loadTranslations } = new i18n(config);
 export const hook = createHook({ locales, defaultLocale, exceptions });
