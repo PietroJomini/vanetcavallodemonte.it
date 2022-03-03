@@ -1,22 +1,12 @@
-<script context="module">
-	/** @type {import('@sveltejs/kit').Load} */
-	export async function load({ fetch }) {
-		const response = await fetch('/api/prices');
-		const { prices } = await response.json();
-		return { props: { prices } };
-	}
-</script>
-
 <script>
 	import Card from '$lib/components/admin/Card.svelte';
 	import Table from '$lib/components/admin/Table.svelte';
-
-	export let prices;
 </script>
 
-<Card>
+<Card endpoint="/api/prices">
 	<div slot="title">Prezzi</div>
-	<div slot="content">
+	<div slot="content" let:response>
+		{@const prices = response.prices}
 		{#if prices.length > 0}
 			<Table
 				head={['Nome', 'Prezzo']}

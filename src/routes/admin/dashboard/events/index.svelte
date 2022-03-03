@@ -1,18 +1,3 @@
-<script context="module">
-	/** @type {import('@sveltejs/kit').Load} */
-	export async function load({ fetch }) {
-		const events = await fetch('/api/events');
-		const tags = await fetch('/api/events/tags');
-
-		return {
-			props: {
-				events: (await events.json()).events,
-				tags: (await tags.json()).tags
-			}
-		};
-	}
-</script>
-
 <script>
 	import { goto } from '$app/navigation';
 
@@ -20,17 +5,15 @@
 	import Plus from '$lib/components/admin/icons/Plus.svelte';
 	import Table from '$lib/components/admin/Table.svelte';
 	import TagList from '$lib/components/admin/TagList.svelte';
-
-	export let events;
-	export let tags;
 </script>
 
-<Card>
+<Card endpoint="/api/events">
 	<div slot="title">Eventi</div>
 	<div slot="actions" class="flex">
 		<Plus on:click={() => goto('/admin/dashboard/events/new')} />
 	</div>
-	<div slot="content">
+	<div slot="content" let:response>
+		{@const events = response.events}
 		{#if events.length > 0}
 			<Table
 				head={['Titolo', 'Descrizione', 'Link', 'Inizio', 'Fine', 'Tags']}
@@ -52,12 +35,13 @@
 	</div>
 </Card>
 
-<Card>
+<Card endpoint="/api/events/tags">
 	<div slot="title">Tags</div>
 	<div slot="actions" class="flex">
 		<Plus on:click={() => goto('/admin/dashboard/events/tags/new')} />
 	</div>
-	<div slot="content">
+	<div slot="content" let:response>
+		{@const tags = response.tags}
 		{#if tags.length > 0}
 			<Table
 				head={['Nome', 'Colore', 'Protetto']}
