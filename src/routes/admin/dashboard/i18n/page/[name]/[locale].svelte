@@ -58,7 +58,9 @@
 			{/each}
 		</div>
 		{#if schema.length > 0}
-			<div class="w-full border-t py-3 text-center text-gray-700">Nuovi campi</div>
+			<div class={`w-full text-center text-gray-700 ${rows.length > 0 ? 'border-t py-3' : ''}`}>
+				Nuovi campi
+			</div>
 			<div class="flex flex-col space-y-3">
 				{#each schema as row}
 					<div class="flex">
