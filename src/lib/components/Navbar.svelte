@@ -30,7 +30,7 @@
 		transtion:slide
 	>
 		<div class="flex flex-grow items-center justify-between lg:flex-none">
-			<Logo />
+			<Link pre={() => (open = false)}><Logo /></Link>
 			<div class="h-6 w-6 cursor-pointer lg:hidden" on:click={() => (open = !open)}>
 				{#if !open} <Icon src={MenuAlt3} /> {:else} <Icon src={X} />{/if}
 			</div>
@@ -51,21 +51,19 @@
 		</nav>
 
 		{#if open}
-			<nav
-				class="flex flex-col space-y-5 transition-all"
-				transition:slide
-				on:click={() => (open = !open)}
-			>
+			<nav class="flex flex-col space-y-5 transition-all" transition:slide>
 				<div class="flex w-full flex-col space-y-4 p-4">
 					{#each pages as page}
-						<Link to={page.to}>
+						<Link to={page.to} pre={() => (open = false)}>
 							<span class="whitespace-nowrap font-semibold uppercase">{$t(page.key)}</span>
 						</Link>
 					{/each}
 				</div>
 				<Separator horizontal />
 				<div class="relative flex w-full items-center justify-center space-x-2 text-center">
-					<Link to="events"><div class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></div></Link>
+					<Link to="events" pre={() => (open = false)}
+						><div class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></div></Link
+					>
 					<LangSwitch />
 				</div>
 			</nav>
