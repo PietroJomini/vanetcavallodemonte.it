@@ -7,6 +7,7 @@
 	import { navbar } from '$lib/stores.js';
 	import Separator from '$lib/components/Separator.svelte';
 	import Card from '$lib/components/Card.svelte';
+	import Image from '$lib/components/Image.svelte';
 
 	onMount(() => navbar.update((v) => ({ ...v, absolute: true })));
 	onDestroy(() => navbar.update((v) => ({ ...v, absolute: false })));
@@ -45,7 +46,7 @@
 <div class="w-full p-10 pt-0">
 	<Card>
 		<svelte:fragment slot="image">
-			<div class="h-full w-full bg-green-200" />
+			<Image dummy />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">
@@ -58,7 +59,7 @@
 	</Card>
 	<Card flip>
 		<svelte:fragment slot="image">
-			<div class="h-full w-full bg-green-200" />
+			<Image dummy />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">
