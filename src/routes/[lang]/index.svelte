@@ -9,11 +9,12 @@
 	import Card from '$lib/components/Card.svelte';
 	import Image from '$lib/components/Image.svelte';
 
+	import { carousel } from '/static/images/map.json';
+
 	onMount(() => navbar.update((v) => ({ ...v, absolute: true })));
 	onDestroy(() => navbar.update((v) => ({ ...v, absolute: false })));
 </script>
 
-<!-- TODO when images https://splidejs.com/guides/options/#lazyload -->
 <Splide
 	options={{
 		type: 'loop',
@@ -29,9 +30,11 @@
 		keyboard: false
 	}}
 >
-	<SplideSlide><div class="h-screen w-screen bg-blue-400" /></SplideSlide>
-	<SplideSlide><div class="h-screen w-screen bg-yellow-400" /></SplideSlide>
-	<SplideSlide><div class="h-screen w-screen bg-green-400" /></SplideSlide>
+	{#each carousel as src}
+		<SplideSlide>
+			<div class="h-screen w-screen"><Image bg key={`carousel/${src}`} /></div>
+		</SplideSlide>
+	{/each}
 </Splide>
 
 <div class="mx-auto max-w-6xl p-10 pt-20 text-center">

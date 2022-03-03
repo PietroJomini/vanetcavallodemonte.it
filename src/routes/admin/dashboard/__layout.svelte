@@ -4,7 +4,7 @@
 
 <script>
 	import Navbar from '$lib/components/admin/Navbar.svelte';
-	import { Calendar, Cog, CurrencyEuro, GlobeAlt } from '@steeze-ui/heroicons';
+	import { Calendar, Cog, CurrencyEuro, GlobeAlt, Photograph } from '@steeze-ui/heroicons';
 
 	const tabs = [
 		{
@@ -27,6 +27,13 @@
 			to: '/admin/dashboard/i18n',
 			color: 'text-amber-400',
 			icon: GlobeAlt
+		},
+		{
+			key: 'carousel',
+			name: 'Immagini',
+			to: '/admin/dashboard/carousel',
+			color: 'text-lime-500',
+			icon: Photograph
 		},
 		{
 			key: 'settings',

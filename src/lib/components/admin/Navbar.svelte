@@ -8,7 +8,7 @@
 	$: selected = tabs.find((tab) => tab.key === name);
 </script>
 
-<div class="flex h-screen w-52 flex-col justify-between p-3 pr-0">
+<div class="flex h-screen w-52 shrink-0 flex-col justify-between p-3 pr-0">
 	<div class="flex w-full flex-col">
 		<a
 			href="/admin/dashboard"
