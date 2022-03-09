@@ -11,14 +11,14 @@
 	import { t } from '$lib/i18n';
 
 	const pages = [
-		{ to: `ride`, key: `navbar.ride` },
-		{ to: `lessons`, key: `navbar.lessons` },
-		{ to: `childs`, key: `navbar.childs` },
-		{ to: `trekking`, key: `navbar.trekking` },
-		{ to: `camps`, key: `navbar.camps` },
-		{ to: `farm`, key: `navbar.farm` },
-		{ to: `prices`, key: `navbar.prices` },
-		{ to: `contacts`, key: `navbar.contacts` }
+		{ enabled: true, to: `ride`, key: `navbar.ride` },
+		{ enabled: false, to: `lessons`, key: `navbar.lessons` },
+		{ enabled: false, to: `childs`, key: `navbar.childs` },
+		{ enabled: false, to: `trekking`, key: `navbar.trekking` },
+		{ enabled: true, to: `camps`, key: `navbar.camps` },
+		{ enabled: false, to: `farm`, key: `navbar.farm` },
+		{ enabled: true, to: `prices`, key: `navbar.prices` },
+		{ enabled: true, to: `contacts`, key: `navbar.contacts` }
 	];
 
 	let open = false;
@@ -38,7 +38,7 @@
 
 		<nav class="hidden flex-row space-y-0 space-x-10 lg:flex">
 			<div class="flex w-auto flex-row space-y-0 space-x-4 p-0">
-				{#each pages as page}
+				{#each pages.filter((page) => page.enabled) as page}
 					<Link to={page.to}>
 						<span class="whitespace-nowrap font-semibold uppercase">{$t(page.key)}</span>
 					</Link>
