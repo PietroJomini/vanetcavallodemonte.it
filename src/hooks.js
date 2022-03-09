@@ -11,10 +11,7 @@ export const handle = async ({ event, resolve }) => {
 	const { session_id } = parse(cookies || '');
 	event.locals.auth = (session_id && session.get(session_id)) !== undefined;
 
-	const response = await resolve(event, { transformPage: apply });
-	response.headers.set('cache-control', 'no-cache');
-
-	return response;
+	return resolve(event, { transformPage: apply });
 };
 
 /** @type {import('@sveltejs/kit').Handle} */

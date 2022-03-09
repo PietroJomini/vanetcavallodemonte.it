@@ -17,7 +17,7 @@ export const createHook =
 			return {
 				failed: true,
 				redirect: new Response(undefined, {
-					headers: { location },
+					headers: { location, 'cache-control': 'no-store' },
 					status: 301
 				})
 			};
