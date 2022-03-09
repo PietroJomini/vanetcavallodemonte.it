@@ -2,21 +2,21 @@
 	import { slide } from 'svelte/transition';
 	import { Icon } from '@steeze-ui/svelte-icon';
 	import { MenuAlt3, X, Calendar } from '@steeze-ui/heroicons';
-
 	import Logo from './Logo.svelte';
 	import LangSwitch from './LangSwitch.svelte';
 	import Separator from './Separator.svelte';
 	import { navbar } from '$lib/stores';
 	import Link from './Link.svelte';
 	import { t } from '$lib/i18n';
+	import colors from '$lib/colors';
 
 	const pages = [
 		{ enabled: true, to: `ride`, key: `navbar.ride` },
-		{ enabled: false, to: `lessons`, key: `navbar.lessons` },
-		{ enabled: false, to: `childs`, key: `navbar.childs` },
-		{ enabled: false, to: `trekking`, key: `navbar.trekking` },
+		{ enabled: true, to: `lessons`, key: `navbar.lessons` },
+		{ enabled: true, to: `childs`, key: `navbar.childs` },
+		{ enabled: true, to: `trekking`, key: `navbar.trekking` },
 		{ enabled: true, to: `camps`, key: `navbar.camps` },
-		{ enabled: false, to: `farm`, key: `navbar.farm` },
+		{ enabled: true, to: `farm`, key: `navbar.farm` },
 		{ enabled: true, to: `prices`, key: `navbar.prices` },
 		{ enabled: true, to: `contacts`, key: `navbar.contacts` }
 	];
@@ -40,12 +40,22 @@
 			<div class="flex w-auto flex-row space-y-0 space-x-4 p-0">
 				{#each pages.filter((page) => page.enabled) as page}
 					<Link to={page.to}>
-						<span class="whitespace-nowrap font-semibold uppercase">{$t(page.key)}</span>
+						<span
+							class={`whitespace-nowrap font-semibold uppercase ${
+								colors[page.to].text_hover
+							} transition`}
+						>
+							{$t(page.key)}
+						</span>
 					</Link>
 				{/each}
 			</div>
 			<div class="relative flex w-full items-center justify-center space-x-2 text-left">
-				<Link to="events"><div class="h-6 w-6 cursor-pointer"><Icon src={Calendar} /></div></Link>
+				<Link to="events"
+					><div class={`h-6 w-6 cursor-pointer transition ${colors.events.text_hover}`}>
+						<Icon src={Calendar} />
+					</div></Link
+				>
 				<LangSwitch />
 			</div>
 		</nav>
@@ -55,7 +65,9 @@
 				<div class="flex w-full flex-col space-y-4 p-4">
 					{#each pages.filter((page) => page.enabled) as page}
 						<Link to={page.to} pre={() => (open = false)}>
-							<span class="whitespace-nowrap font-semibold uppercase">{$t(page.key)}</span>
+							<span class={`whitespace-nowrap font-semibold uppercase hover:${page.hover}`}>
+								{$t(page.key)}
+							</span>
 						</Link>
 					{/each}
 				</div>

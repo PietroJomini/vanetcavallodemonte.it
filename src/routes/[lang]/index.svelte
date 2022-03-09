@@ -10,6 +10,7 @@
 	import Image from '$lib/components/Image.svelte';
 
 	import { carousel } from '/static/images/map.json';
+	import colors from '$lib/colors';
 
 	onMount(() => navbar.update((v) => ({ ...v, absolute: true })));
 	onDestroy(() => navbar.update((v) => ({ ...v, absolute: false })));
@@ -51,7 +52,7 @@
 		<svelte:fragment slot="image">
 			<Image key="home/camp.jpg" bg />
 		</svelte:fragment>
-		<svelte:fragment slot="title">{$t('home.cards.1.title')}</svelte:fragment>
+		<div slot="title" class={colors.camps.text}>{$t('home.cards.1.title')}</div>
 		<svelte:fragment slot="content">
 			{$t('home.cards.1.content')}
 			<a
@@ -64,7 +65,7 @@
 		<svelte:fragment slot="image">
 			<Image key="home/ride.jpg" bg />
 		</svelte:fragment>
-		<svelte:fragment slot="title">{$t('home.cards.2.title')}</svelte:fragment>
+		<div slot="title" class={colors.ride.text}>{$t('home.cards.2.title')}</div>
 		<svelte:fragment slot="content">
 			{$t('home.cards.2.content')}
 			<a

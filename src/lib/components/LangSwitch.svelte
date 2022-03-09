@@ -6,6 +6,7 @@
 	import { page } from '$app/stores';
 
 	import { locales } from '/static/translations/schema.json';
+	import colors from '$lib/colors';
 
 	$: ({ stuff } = $page);
 
@@ -14,7 +15,9 @@
 
 <div class="" on:click={(_) => (open = !open)}>
 	<OutClick on:outclick={(_) => (open = false)}>
-		<div class="h-6 w-6 cursor-pointer"><Icon src={GlobeAlt} /></div>
+		<div class={`h-6 w-6 transition cursor-pointer ${colors.lang.text_hover}`}>
+			<Icon src={GlobeAlt} />
+		</div>
 
 		{#if open}
 			<div class="absolute right-0 top-14 w-full px-5 lg:-right-10 lg:w-48">
