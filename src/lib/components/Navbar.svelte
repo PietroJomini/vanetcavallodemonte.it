@@ -53,7 +53,7 @@
 		{#if open}
 			<nav class="flex flex-col space-y-5 transition-all" transition:slide>
 				<div class="flex w-full flex-col space-y-4 p-4">
-					{#each pages as page}
+					{#each pages.filter((page) => page.enabled) as page}
 						<Link to={page.to} pre={() => (open = false)}>
 							<span class="whitespace-nowrap font-semibold uppercase">{$t(page.key)}</span>
 						</Link>
