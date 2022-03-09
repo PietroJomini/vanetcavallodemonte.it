@@ -9,6 +9,14 @@
 	import Image from '$lib/components/Image.svelte';
 
 	let modal = false;
+	const del = async () => {
+		await fetch('/api/images', {
+			method: 'DELETE',
+			body: JSON.stringify({ src: $page.params.src })
+		});
+
+		goto('/admin/dashboard/carousel');
+	};
 </script>
 
 <Card>
@@ -17,7 +25,7 @@
 		<X on:click={() => goto('/admin/dashboard/carousel')} />
 		<Trash on:click={() => (modal = true)} />
 		<Modal bind:show={modal}>
-			<!-- <Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} /> -->
+			<Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} />
 		</Modal>
 	</div>
 	<div slot="content">

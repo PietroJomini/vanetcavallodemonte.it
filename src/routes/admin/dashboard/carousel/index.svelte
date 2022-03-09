@@ -11,19 +11,15 @@
 		const target = event.target.files[0];
 		const reader = new FileReader();
 
-		reader.addEventListener('load', () => {
-			const body = new FormData();
-
-			// body.append('source', );
-
+		reader.addEventListener('load', () =>
 			fetch('/api/images', {
 				method: 'POST',
 				body: JSON.stringify({
 					source: reader.result,
 					name: target.name
 				})
-			});
-		});
+			}).then(goto('/admin/dashboard/carousel'))
+		);
 
 		reader.readAsDataURL(target);
 	};

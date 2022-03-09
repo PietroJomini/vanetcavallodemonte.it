@@ -36,3 +36,14 @@ export const patch = handler({
 	action: ({ body }) =>
 		promises.writeFile('static/images/map.json', JSON.stringify({ carousel: body.order }))
 });
+
+export const del = handler({
+	action: async ({ body }) => {
+		await promises.rm(`static/images/carousel/${body.src}`);
+		const map = JSON.parse((await promises.readFile('static/images/map.json')).toString());
+		await promises.writeFile(
+			'static/images/map.json',
+			JSON.stringify({ carousel: map.carousel.filter((key) => key !== body.src) })
+		);
+	}
+});
