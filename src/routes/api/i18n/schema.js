@@ -10,7 +10,7 @@ export const post = handler({
 		Promise.all([
 			schema.update((body) => ({
 				...body,
-				locales: [...body.locales, { name, locale, enabled }]
+				locales: [...body.locales, { name, locale, enabled, protected: false }]
 			})),
 			pages.make(locale)
 		])

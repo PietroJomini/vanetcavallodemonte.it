@@ -45,7 +45,7 @@
 	<div slot="actions" class="flex">
 		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/i18n')} />
-		<Trash on:click={del} />
+		<Trash on:click={del} disabled={locale.protected} />
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
