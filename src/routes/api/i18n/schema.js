@@ -6,11 +6,11 @@ export const get = handler({
 });
 
 export const post = handler({
-	action: async ({ body: { name, locale, enabled } }) =>
+	action: async ({ body: { name, native, locale } }) =>
 		Promise.all([
 			schema.update((body) => ({
 				...body,
-				locales: [...body.locales, { name, locale, enabled, protected: false }]
+				locales: [...body.locales, { name, native, locale, enabled: false, protected: false }]
 			})),
 			pages.make(locale)
 		])

@@ -44,7 +44,7 @@
 			<tr
 				class="group"
 				class:cursor-pointer={row.to}
-				on:click={() => row.to && goto(row.to)}
+				on:click={() => (row.click ? row.click() : row.to && goto(row.to))}
 				data-index={index}
 				draggable={sortable}
 				on:dragstart={drag_events.start}

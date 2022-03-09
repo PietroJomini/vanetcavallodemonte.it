@@ -20,15 +20,16 @@
 	</div>
 	<div slot="content">
 		<Table
-			head={['Lingua', 'Locale', 'Attivo', 'Protetto']}
+			head={['Lingua', 'Nativo', 'Locale', 'Attivo', 'Protetto']}
 			rows={schema?.locales.map((locale) => ({
 				items: [
 					locale.name,
+					locale.native,
 					locale.locale,
 					locale.enabled ? 'SI' : 'NO',
 					locale.protected ? 'SI' : 'NO'
 				],
-				to: `/admin/dashboard/i18n/${locale.locale}`
+				to: !locale.protected && `/admin/dashboard/i18n/${locale.locale}`
 			}))}
 		/>
 	</div>

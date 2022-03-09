@@ -12,43 +12,48 @@
 	import { goto } from '$app/navigation';
 	import Card from '$lib/components/admin/Card.svelte';
 	import X from '$lib/components/admin/icons/X.svelte';
-	import Check from '$lib/components/admin/icons/Check.svelte';
 	import Text from '$lib/components/admin/input/Text.svelte';
-	import Switch from '$lib/components/admin/input/Switch.svelte';
-
-	let name;
-	let locale;
-	let enabled;
-	let error = false;
+	import Table from '$lib/components/admin/Table.svelte';
+	import codes from '$lib/i18n/ISO639codes.js';
 
 	export let locales;
-	$: checkLocale = locale && !locales.find((l) => l.locale === locale);
+	let filter;
 
-	const submit = async () => {
-		if (name && checkLocale) {
-			fetch('/api/i18n/schema', {
-				method: 'POST',
-				body: JSON.stringify({ name, locale, enabled })
-			});
+	$: locales.forEach(({ locale }) => delete codes[locale]);
+	$: codes_list = Object.keys(codes).map((code) => ({ code, ...codes[code] }));
+	$: lc_filter = filter && filter.toLowerCase();
+	$: filtered_codes = codes_list.filter(({ name, native, code }) =>
+		filter
+			? name.toLowerCase().match(lc_filter) ||
+			  native.toLowerCase().match(lc_filter) ||
+			  code.match(lc_filter)
+			: true
+	);
 
-			goto('/admin/dashboard/i18n');
-		} else {
-			error = true;
-		}
+	const submit = async (code) => {
+		const { name, native } = codes[code];
+		fetch('/api/i18n/schema', {
+			method: 'POST',
+			body: JSON.stringify({ name, native, locale: code })
+		});
+
+		goto('/admin/dashboard/i18n');
 	};
 </script>
 
 <Card>
-	<div slot="title">Crea un nuovo prezzo</div>
+	<div slot="title">Seleziona una lingua</div>
 	<div slot="actions" class="flex">
-		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/i18n')} />
 	</div>
-	<div slot="content">
-		<div class="flex flex-col space-y-3">
-			<Text name="Nome" required error={error && !name} bind:value={name} />
-			<Text name="Locale" required error={error && !checkLocale} bind:value={locale} />
-			<Switch name="Abilitato" bind:value={enabled} />
-		</div>
+	<div slot="content" class="flex flex-col space-y-3">
+		<Text bind:value={filter} name="Filtro" />
+		<Table
+			head={['Nome', 'Nativo', 'Locale']}
+			rows={filtered_codes.map(({ code, name, native }) => ({
+				items: [name, native, code],
+				click: () => submit(code)
+			}))}
+		/>
 	</div>
 </Card>

@@ -41,16 +41,14 @@
 </script>
 
 <Card>
-	<div slot="title">Modifica lingua</div>
+	<div slot="title">{locale.name} - {locale.locale}</div>
 	<div slot="actions" class="flex">
 		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/i18n')} />
-		<Trash on:click={del} disabled={locale.protected} />
+		<Trash on:click={del} />
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
-			<Text name="Nome" bind:value={locale.name} disabled />
-			<Text name="Locale" bind:value={locale.locale} disabled />
 			<Switch name="Abilitato" bind:value={locale.enabled} />
 		</div>
 	</div>
