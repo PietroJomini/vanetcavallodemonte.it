@@ -49,7 +49,7 @@
 <div class="w-full p-10 pt-0">
 	<Card>
 		<svelte:fragment slot="image">
-			<Image dummy />
+			<Image key="home/camp.jpg" bg />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">
@@ -62,7 +62,7 @@
 	</Card>
 	<Card flip>
 		<svelte:fragment slot="image">
-			<Image dummy />
+			<Image key="home/ride.jpg" bg />
 		</svelte:fragment>
 		<svelte:fragment slot="title">{$t('home.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">

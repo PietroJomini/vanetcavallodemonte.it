@@ -7,3 +7,8 @@ export const get = handler({
 		return file.toString();
 	}
 });
+
+export const patch = handler({
+	action: ({ body }) =>
+		promises.writeFile('static/images/map.json', JSON.stringify({ carousel: body.order }))
+});
