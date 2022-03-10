@@ -15,11 +15,13 @@
 	import Card from '$lib/components/admin/Card.svelte';
 	import X from '$lib/components/admin/icons/X.svelte';
 	import Check from '$lib/components/admin/icons/Check.svelte';
-	import Text from '$lib/components/admin/input/Text.svelte';
 	import Trash from '$lib/components/admin/icons/Trash.svelte';
 	import Switch from '$lib/components/admin/input/Switch.svelte';
+	import Modal from '$lib/components/admin/Modal.svelte';
+	import Confirm from '$lib/components/admin/input/Confirm.svelte';
 
 	export let locale;
+	let modal = false;
 
 	const submit = async () => {
 		fetch('/api/i18n/schema', {
@@ -45,7 +47,10 @@
 	<div slot="actions" class="flex">
 		<Check on:click={submit} />
 		<X on:click={() => goto('/admin/dashboard/i18n')} />
-		<Trash on:click={del} />
+		<Trash on:click={() => (modal = true)} />
+		<Modal bind:show={modal}>
+			<Confirm yes="SI" no="NO" on:yes={del} on:no={() => (modal = false)} />
+		</Modal>
 	</div>
 	<div slot="content">
 		<div class="flex flex-col space-y-3">
