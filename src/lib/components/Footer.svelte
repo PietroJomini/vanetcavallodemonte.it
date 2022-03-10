@@ -40,5 +40,6 @@
 	<Separator horizontal />
 	<div class="flex w-full flex-row flex-wrap items-center justify-center space-x-10 p-3">
 		<span class="text-sm text-gray-400">© 2022 Vanet Cavallo. All rights reserverd.</span>
+		<a href="sitemap.txt" class="text-sm text-gray-400">Sitemap</a>
 	</div>
 </div>
