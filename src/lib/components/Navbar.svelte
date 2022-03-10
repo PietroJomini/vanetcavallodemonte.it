@@ -12,11 +12,11 @@
 
 	const pages = [
 		{ enabled: true, to: `ride`, key: `navbar.ride` },
-		{ enabled: true, to: `lessons`, key: `navbar.lessons` },
-		{ enabled: true, to: `childs`, key: `navbar.childs` },
-		{ enabled: true, to: `trekking`, key: `navbar.trekking` },
+		{ enabled: false, to: `lessons`, key: `navbar.lessons` },
+		{ enabled: false, to: `childs`, key: `navbar.childs` },
+		{ enabled: false, to: `trekking`, key: `navbar.trekking` },
 		{ enabled: true, to: `camps`, key: `navbar.camps` },
-		{ enabled: true, to: `farm`, key: `navbar.farm` },
+		{ enabled: false, to: `farm`, key: `navbar.farm` },
 		{ enabled: true, to: `prices`, key: `navbar.prices` },
 		{ enabled: true, to: `contacts`, key: `navbar.contacts` }
 	];
