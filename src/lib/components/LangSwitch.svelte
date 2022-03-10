@@ -25,7 +25,7 @@
 					{#each locales.filter(({ enabled }) => enabled) as lang}
 						<Link locale={lang.locale} to={stuff.route}>
 							<span class="cursor-pointer p-2 text-xs font-semibold uppercase text-gray-700">
-								{lang.name}
+								{lang.native}
 							</span>
 						</Link>
 					{/each}
