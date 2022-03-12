@@ -2,6 +2,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/i18n';
 	import Link from '$lib/components/Link.svelte';
+	import Image from '$lib/components/Image.svelte';
 </script>
 
 <Hero>
@@ -17,5 +18,5 @@
 			</Link>
 		</div>
 	</svelte:fragment>
-	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><Image bg key="/camps/1.jpg" /></svelte:fragment>
 </Hero>

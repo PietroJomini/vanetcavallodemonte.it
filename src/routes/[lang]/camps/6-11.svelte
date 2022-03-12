@@ -5,6 +5,7 @@
 	import { t } from '$lib/i18n';
 	import Price from '$lib/components/Price.svelte';
 	import Link from '$lib/components/Link.svelte';
+	import Image from '$lib/components/Image.svelte';
 </script>
 
 <Hero>
@@ -23,29 +24,29 @@
 			</Link>
 		</div>
 	</svelte:fragment>
-	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><Image key="camps/6-11/1.jpg" bg /></svelte:fragment>
 </Hero>
 
 <Separator horizontal dotted weight="200" width="4" pad />
 
 <div class="w-full p-10 pt-0">
 	<Card>
-		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><Image key="camps/6-11/cards/1.jpg" bg /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('camps.a6_11.cards.1.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('camps.a6_11.cards.1.content')}</svelte:fragment>
 	</Card>
 	<Card flip>
-		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><Image key="camps/6-11/cards/2.jpg" bg /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('camps.a6_11.cards.2.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('camps.a6_11.cards.2.content')}</svelte:fragment>
 	</Card>
 	<Card>
-		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><Image key="camps/6-11/cards/3.jpg" bg /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('camps.a6_11.cards.3.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('camps.a6_11.cards.3.content')}</svelte:fragment>
 	</Card>
 	<Card flip>
-		<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+		<svelte:fragment slot="image"><Image key="camps/6-11/cards/4.jpg" bg /></svelte:fragment>
 		<svelte:fragment slot="title">{$t('camps.a6_11.cards.4.title')}</svelte:fragment>
 		<svelte:fragment slot="content">{$t('camps.a6_11.cards.4.content')}</svelte:fragment>
 	</Card>
