@@ -1,4 +1,7 @@
-import { session, auth } from '$lib/auth';
+import { session } from '$lib/auth';
+
+import { config } from 'dotenv';
+config({ path: './src/lib/config/.env' });
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export const post = async ({ request }) => {
@@ -7,7 +10,7 @@ export const post = async ({ request }) => {
 	const redirect = params.has('redirect');
 	const failure = params.has('failure');
 
-	return auth(body.get('password'))
+	return body.get('password') === process.env.ADMIN
 		? {
 				status: redirect ? 302 : 200,
 				headers: {

@@ -1,7 +1,12 @@
 import { MongoClient } from 'mongodb';
-import { mongo } from '$lib/config/keys.json';
 
-const client = new MongoClient(mongo, { useUnifiedTOpology: true, useNewUrlParser: true });
+import { config } from 'dotenv';
+config({ path: './src/lib/config/.env' });
+
+const client = new MongoClient(process.env.MONGO, {
+	useUnifiedTOpology: true,
+	useNewUrlParser: true
+});
 const clientPromise = client.connect();
 
 export default clientPromise;
