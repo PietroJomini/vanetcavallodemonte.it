@@ -5,9 +5,10 @@
 
 <div class="flex items-center text-gray-600 lg:w-1/4">
 	<div
-		class="w-full rounded bg-white p-3 text-center"
+		class="w-full rounded bg-white p-3 text-center shadow-md"
 		class:border-yellow-400={focus}
 		class:border-2={focus}
+		class:border={!focus}
 	>
 		<slot name="image" />
 		<div class="p-5">

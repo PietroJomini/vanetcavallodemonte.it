@@ -5,6 +5,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import { t } from '$lib/i18n';
 	import Price from '$lib/components/Price.svelte';
+	import Image from '$lib/components/Image.svelte';
 </script>
 
 <Hero>
@@ -17,7 +18,7 @@
 			{$t('ride.reserve')}
 		</div>
 	</svelte:fragment>
-	<svelte:fragment slot="image"><div class="h-full w-full bg-green-200" /></svelte:fragment>
+	<svelte:fragment slot="image"><Image key="ride/1.jpeg" bg /></svelte:fragment>
 </Hero>
 
 <Separator horizontal dotted weight="200" width="4" pad />
@@ -29,7 +30,9 @@
 	<div class="mt-12 flex flex-col space-y-4 p-4 lg:flex-row lg:space-y-0 lg:space-x-4">
 		<PriceCard focus>
 			<svelte:fragment slot="image">
-				<div class="hidden h-80 w-full bg-green-200 lg:block" />
+				<div class="h-80 w-full lg:block">
+					<Image key="ride/2.jpeg" bg className="rounded" />
+				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				2
@@ -46,7 +49,9 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="hidden h-80 w-full bg-green-200 lg:block" />
+				<div class="hidden h-80 w-full lg:block">
+					<Image key="ride/3.jpg" bg className="rounded" />
+				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				3
@@ -62,7 +67,9 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="hidden h-80 w-full bg-green-200 lg:block" />
+				<div class="hidden h-80 w-full lg:block">
+					<Image key="ride/4.jpg" bg className="rounded" />
+				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				4
@@ -78,7 +85,9 @@
 		</PriceCard>
 		<PriceCard>
 			<svelte:fragment slot="image">
-				<div class="hidden h-80 w-full bg-green-200 lg:block" />
+				<div class="hidden h-80 w-full lg:block">
+					<Image key="ride/5.jpg" bg className="rounded" />
+				</div>
 			</svelte:fragment>
 			<svelte:fragment slot="formula">
 				5
