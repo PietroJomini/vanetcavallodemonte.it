@@ -28,12 +28,15 @@
 		interval: 5000,
 		pauseOnHover: false,
 		pauseOnFocus: false,
-		keyboard: false
+		keyboard: false,
+		lazyLoad: 'sequential'
 	}}
 >
 	{#each carousel as src}
 		<SplideSlide>
-			<div class="h-screen w-screen"><Image bg key={`carousel/${src}`} /></div>
+			<div class="h-screen w-screen">
+				<img alt={src} data-splide-lazy={`/images/carousel/${src}`} class="fit h-full w-full" />
+			</div>
 		</SplideSlide>
 	{/each}
 </Splide>
@@ -75,3 +78,10 @@
 		</svelte:fragment>
 	</Card>
 </div>
+
+<style>
+	.fit {
+		object-fit: cover;
+		object-position: center center;
+	}
+</style>
