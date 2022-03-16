@@ -9,7 +9,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name vanetcavallodemonte.it www.vanetcavallodemonte.it
+    server_name vanetcavallodemonte.it www.vanetcavallodemonte.it;
 
     location / {
         proxy_set_header X-Forwarded- $proxy_add_x_forwarded_for;
